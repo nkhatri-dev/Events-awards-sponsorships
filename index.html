@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIF Sponsorship & Partnership Validator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: #FAF9F7; 
+            color: #1a1a1a; 
+            line-height: 1.6;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+        }
+        
+        .header { 
+            background: #ffffff; 
+            border-bottom: 1px solid #e5e5e5; 
+            padding: 30px 50px; 
+            display: flex; 
+            align-items: center; 
+            gap: 25px; 
+        }
+        
+        .logo-container { 
+            height: 60px;
+            flex-shrink: 0; 
+        }
+        
+        .logo-container img {
+            height: 100%;
+            width: auto;
+        }
+        
+        .header-content { 
+            flex: 1; 
+        }
+        
+        .header h1 { 
+            font-size: 1.75rem; 
+            margin-bottom: 4px; 
+            color: #1a1a1a; 
+            font-weight: 600; 
+        }
+        
+        .header p { 
+            font-size: 0.95rem; 
+            color: #666; 
+            font-weight: 400; 
+        }
+        
+        .content { 
+            padding: 40px 50px; 
+            background: #ffffff; 
+        }
+        
+        .type-selector { 
+            background: #FAF9F7; 
+            border: 1px solid #e5e5e5; 
+            border-radius: 8px; 
+            padding: 25px; 
+            margin-bottom: 35px; 
+        }
+        
+        .type-selector h3 { 
+            color: #1a1a1a; 
+            margin-bottom: 18px; 
+            font-size: 1.1rem; 
+            text-align: center; 
+            font-weight: 600; 
+        }
+        
+        .radio-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+        }
+        
+        .radio-option { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            color: #1a1a1a; 
+            padding: 10px 20px; 
+            border-radius: 6px; 
+            transition: background 0.2s; 
+        }
+        
+        .radio-option:hover { 
+            background: rgba(16, 104, 85, 0.05); 
+        }
+        
+        .radio-option input[type="radio"] { 
+            width: 20px; 
+            height: 20px; 
+            cursor: pointer; 
+            accent-color: #106855; 
+        }
+        
+        .form-section { 
+            margin-bottom: 35px; 
+        }
+        
+        .section-title { 
+            background: #106855; 
+            color: #ffffff; 
+            padding: 14px 24px; 
+            border-radius: 6px; 
+            margin-bottom: 20px; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            letter-spacing: 0.3px; 
+        }
+        
+        .warning-section .section-title { 
+            background: #D97706; 
+        }
+        
+        .form-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px 25px; 
+        }
+        
+        .form-field { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+        }
+        
+        .form-field label { 
+            font-weight: 500; 
+            color: #1a1a1a; 
+            font-size: 0.9rem; 
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #106855;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: help;
+            position: relative;
+        }
+        
+        .tooltip-icon:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 0;
+            top: calc(100% + 8px);
+            background: #2d2d2d;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            white-space: normal;
+            width: 350px;
+            z-index: 1000;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .tooltip-icon:hover::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: calc(100% + 2px);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #2d2d2d;
+            z-index: 1001;
+        }
+        
+        .form-field input, 
+        .form-field select { 
+            padding: 11px 14px; 
+            border: 1px solid #d1d5db; 
+            border-radius: 6px; 
+            font-size: 0.9rem; 
+            background: #ffffff; 
+            color: #1a1a1a; 
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        
+        .form-field input:focus, 
+        .form-field select:focus { 
+            outline: none; 
+            border-color: #106855; 
+            box-shadow: 0 0 0 3px rgba(16, 104, 85, 0.1); 
+        }
+        
+        .form-field select { 
+            cursor: pointer; 
+        }
+        
+        .score-display { 
+            background: #FAF9F7; 
+            border: 2px solid #106855; 
+            border-radius: 6px; 
+            padding: 12px 14px; 
+            font-weight: 700; 
+            color: #106855; 
+            text-align: center; 
+            font-size: 1.1rem; 
+        }
+        
+        .category-avg { 
+            display: none; 
+            margin-top: 20px; 
+        }
+        
+        .category-avg.show { 
+            display: block; 
+        }
+        
+        .results { 
+            background: #FAF9F7; 
+            border: 2px solid #106855; 
+            border-radius: 6px; 
+            padding: 20px; 
+            margin-top: 25px; 
+            text-align: center;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .results h2 { 
+            color: #1a1a1a; 
+            font-size: 1.1rem; 
+            margin-bottom: 12px; 
+            font-weight: 600; 
+        }
+        
+        .final-score { 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            color: #106855; 
+            margin: 12px 0; 
+        }
+        
+        .recommendation { 
+            font-size: 1rem; 
+            font-weight: 600; 
+            padding: 10px 24px; 
+            border-radius: 6px; 
+            margin-top: 12px; 
+            display: inline-block; 
+            letter-spacing: 0.3px; 
+        }
+        
+        .recommendation.apply { 
+            background: #106855; 
+            color: white; 
+        }
+        
+        .recommendation.consider { 
+            background: #eab308; 
+            color: #1a1a1a; 
+        }
+        
+        .recommendation.decline { 
+            background: #dc2626; 
+            color: white; 
+        }
+        
+        .prescreen-alert { 
+            background: #fef3c7; 
+            border: 2px solid #D97706; 
+            border-radius: 6px; 
+            padding: 14px; 
+            margin-top: 18px; 
+            font-weight: 600; 
+            color: #92400e; 
+            text-align: center; 
+            font-size: 0.95rem; 
+        }
+        
+        .prescreen-alert.pass { 
+            background: #d1fae5; 
+            border-color: #106855; 
+            color: #065f46; 
+        }
+        
+        .category-scores { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 10px; 
+            margin: 15px 0; 
+        }
+        
+        .category-score { 
+            background: #ffffff; 
+            padding: 12px; 
+            border-radius: 4px; 
+            border: 1px solid #e5e5e5; 
+        }
+        
+        .category-score h4 { 
+            color: #1a1a1a; 
+            font-size: 0.75rem; 
+            margin-bottom: 6px; 
+            font-weight: 600; 
+        }
+        
+        .category-score .value { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            color: #106855; 
+        }
+        
+        .expand-toggle { 
+            background: #ffffff; 
+            border: 2px solid #106855; 
+            color: #106855; 
+            padding: 8px 18px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            margin-top: 12px; 
+            transition: all 0.2s; 
+        }
+        
+        .download-btn {
+            background: #106855;
+            border: 2px solid #106855;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 12px;
+            margin-left: 10px;
+            transition: all 0.2s;
+        }
+        
+        .download-btn:hover {
+            background: #0d5444;
+            border-color: #0d5444;
+        }
+        
+        .expand-toggle:hover { 
+            background: #106855; 
+            color: white; 
+        }
+        
+        .details-section { 
+            display: none; 
+            margin-top: 18px; 
+            padding-top: 18px; 
+            border-top: 2px solid #e5e5e5; 
+        }
+        
+        .details-section.show { 
+            display: block; 
+        }
+        
+        .hidden { 
+            display: none; 
+        }
+        
+        .form-field input:read-only {
+            background: #f3f4f6;
+            cursor: not-allowed;
+        }
+        
+        /* Searchable Select Styles */
+        .searchable-select {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background: #ffffff;
+            cursor: text;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #106855;
+            box-shadow: 0 0 0 3px rgba(16, 104, 85, 0.1);
+        }
+        
+        .dropdown-options {
+            position: absolute;
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            margin-top: 4px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-options.show {
+            display: block;
+        }
+        
+        .dropdown-option {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-option:hover {
+            background: #f3f4f6;
+        }
+        
+        .dropdown-option.selected {
+            background: rgba(16, 104, 85, 0.1);
+            color: #106855;
+            font-weight: 500;
+        }
+        
+        .approval-reason {
+            background: #d1fae5;
+            border: 2px solid #106855;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .approval-reason h3 {
+            color: #065f46;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .approval-reason p {
+            color: #047857;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 968px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header { 
+                flex-direction: column; 
+                padding: 25px 20px; 
+                text-align: center; 
+            }
+            
+            .content { 
+                padding: 25px 20px; 
+            }
+            
+            .radio-group { 
+                flex-direction: column; 
+                gap: 15px; 
+                align-items: center; 
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-score { 
+                font-size: 2rem; 
+            }
+            
+            .tooltip-icon:hover::after {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://storage.googleapis.com/calculator-file/pif-logo.png" alt="PIF Logo">
+            </div>
+            <div class="header-content">
+                <h1>Partnership & Engagement Validator</h1>
+                <p>Sponsorship, Events & Awards - Automated Decision Support</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="type-selector">
+                <h3>SELECT APPLICATION TYPE</h3>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="type" value="event" checked>
+                        <span>Event Attendance</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="type" value="award">
+                        <span>Award Application</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="type" value="sponsorship">
+                        <span>Sponsorship Evaluation</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Sponsorship sub-selectors (hidden for event/award) -->
+            <div id="sponsorshipSubSelectors" class="hidden">
+                <div class="type-selector" style="margin-bottom:20px; padding:20px;">
+                    <div style="display:flex; gap:30px; flex-wrap:wrap; justify-content:center;">
+                        <div style="flex:1; min-width:200px;">
+                            <label style="font-weight:600; font-size:0.9rem; color:#1a1a1a; display:block; margin-bottom:8px;">Sponsorship Category</label>
+                            <select id="sponsorshipCategory" onchange="updateSponsorshipData()" style="width:100%; padding:10px 14px; border:1px solid #d1d5db; border-radius:6px; font-size:0.9rem; font-family:inherit;">
+                                <option value="Sports & Entertainment">Sports & Entertainment</option>
+                                <option value="Arts & Culture">Arts & Culture</option>
+                                <option value="Thought Leadership">Thought Leadership</option>
+                            </select>
+                        </div>
+                        <div style="flex:1; min-width:200px;">
+                            <label style="font-weight:600; font-size:0.9rem; color:#1a1a1a; display:block; margin-bottom:8px;">Geographic Scope</label>
+                            <select id="sponsorshipScope" onchange="updateSponsorshipData()" style="width:100%; padding:10px 14px; border:1px solid #d1d5db; border-radius:6px; font-size:0.9rem; font-family:inherit;">
+                                <option value="Global">Global</option>
+                                <option value="Domestic">Domestic (KSA)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="form-section">
+                    <div class="section-title">BASIC INFORMATION</div>
+                    <div class="form-grid" id="basicInfo"></div>
+                </div>
+
+                <div class="form-section warning-section" id="prescreenSection">
+                    <div class="section-title" id="prescreenTitle">PRE-SCREENING CRITERIA</div>
+                    <div class="form-grid" id="prescreenFields"></div>
+                    <div class="prescreen-alert hidden" id="prescreenAlert"></div>
+                </div>
+
+                <div id="categorySections">
+                    <div class="form-section">
+                        <div class="section-title" id="category1Title"></div>
+                        <div class="form-grid" id="category1Fields"></div>
+                        <div class="category-avg" id="category1AvgContainer">
+                            <div class="form-field">
+                                <label>Category Average</label>
+                                <div class="score-display" id="category1Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title" id="category2Title"></div>
+                        <div class="form-grid" id="category2Fields"></div>
+                        <div class="category-avg" id="category2AvgContainer">
+                            <div class="form-field">
+                                <label>Category Average</label>
+                                <div class="score-display" id="category2Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title" id="category3Title"></div>
+                        <div class="form-grid" id="category3Fields"></div>
+                        <div class="category-avg" id="category3AvgContainer">
+                            <div class="form-field">
+                                <label>Category Average</label>
+                                <div class="score-display" id="category3Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-title" id="category4Title"></div>
+                        <div class="form-grid" id="category4Fields"></div>
+                        <div class="category-avg" id="category4AvgContainer">
+                            <div class="form-field">
+                                <label>Category Average</label>
+                                <div class="score-display" id="category4Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="category5Section">
+                        <div class="section-title" id="category5Title"></div>
+                        <div class="form-grid" id="category5Fields"></div>
+                        <div class="category-avg" id="category5AvgContainer">
+                            <div class="form-field">
+                                <label>Category Score</label>
+                                <div class="score-display" id="category5Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section hidden" id="category6Section">
+                        <div class="section-title" id="category6Title"></div>
+                        <div class="form-grid" id="category6Fields"></div>
+                        <div class="category-avg" id="category6AvgContainer">
+                            <div class="form-field">
+                                <label>Category Score</label>
+                                <div class="score-display" id="category6Avg">0.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="prestigeSection">
+                        <div class="section-title">PRESTIGE TIER</div>
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label id="prestigeLabel"></label>
+                                <select id="prestigeTier" required></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results" id="resultsSection">
+                    <h2>EVALUATION RESULTS</h2>
+                    
+                    <div>
+                        <strong style="color: #1a1a1a; font-size: 0.9rem;">FINAL SCORE</strong>
+                        <div class="final-score" id="finalScore">0.0</div>
+                    </div>
+                    
+                    <div class="recommendation apply" id="recommendation">
+                        Select options to see recommendation
+                    </div>
+                    
+                    <div class="approval-reason hidden" id="approvalReason">
+                        <h3>Strategic Alignment with PIF</h3>
+                        <p id="approvalReasonText"></p>
+                    </div>
+
+                    <button type="button" class="expand-toggle" id="expandToggle" onclick="toggleDetails()">
+                        ▼ Show Detailed Breakdown
+                    </button>
+                    
+                    <button type="button" class="download-btn" onclick="downloadResults()">
+                        ⬇ Download Results
+                    </button>
+
+                    <div class="details-section" id="detailsSection">
+                        <div class="category-scores" id="categoryScoresDisplay"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Strategic awards that get auto-approved
+        const strategicAwards = {
+            'Global SWF Fund of the Year': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'Global SWF', website: 'https://globalswf.com/', type: 'Nomination / Application', reason: 'Core institutional identity' },
+            'Global SWF Top Performing Fund': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'Global SWF', website: 'https://globalswf.com/', type: 'Assessment-Based (Research)', reason: 'Performance validation' },
+            'Global SWF GSR Award': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'Global SWF', website: 'https://globalswf.com/gsr', type: 'Assessment-Based (Research)', reason: 'Governance & ESG credibility' },
+            'AsianInvestor Asset Management Awards': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'AsianInvestor', website: 'https://www.asianinvestor.net/awards', type: 'Nomination / Application', reason: 'Peer recognition in Asia' },
+            'Global Banking & Finance Awards': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'Global Banking & Finance Review', website: 'https://www.globalbankingandfinance.com/', type: 'Nomination / Application', reason: 'Finance sector recognition' },
+            'International Financial Services Awards': { category: 'Sovereign Wealth Fund & Institutional Excellence', org: 'World Finance', website: 'https://www.worldfinance.com/awards', type: 'Editorial / Nomination', reason: 'Institutional investment' },
+            'Fortune Global 500': { category: 'Thought Leadership & Global Prestige', org: 'Fortune Media', website: 'https://fortune.com/ranking/global-500/', type: 'Editorial / Data-driven Ranking', reason: 'Global scale benchmark' },
+            'Forbes Global 2000': { category: 'Thought Leadership & Global Prestige', org: 'Forbes', website: 'https://www.forbes.com/lists/global2000/', type: 'Editorial / Data-driven Ranking', reason: 'Institutional scale' },
+            'Fortune Change the World': { category: 'Thought Leadership & Global Prestige', org: 'Fortune Media', website: 'https://fortune.com/change-the-world/', type: 'Editorial / Nomination', reason: 'ESG & societal impact' },
+            'RAAI Index': { category: 'Thought Leadership & Global Prestige', org: 'New America & Tufts University', website: 'https://www.newamerica.org/', type: 'Assessment-Based (Research)', reason: 'Responsible investment' },
+            'PMI Project of the Year': { category: 'Project & Program Management Excellence', org: 'Project Management Institute (PMI)', website: 'https://www.pmi.org/about/awards/professional-awards', type: 'Application-Based (Competitive)', reason: 'Mega-project benchmark' },
+            'PMI PMO of the Year': { category: 'Project & Program Management Excellence', org: 'Project Management Institute (PMI)', website: 'https://www.pmi.org/about/awards/pmo-award', type: 'Application-Based (Competitive)', reason: 'PMO institutional excellence' },
+            'IPMA Global Awards': { category: 'Project & Program Management Excellence', org: 'International Project Management Association', website: 'https://awards.ipma.world/', type: 'Application-Based (Competitive)', reason: 'Global PM recognition' },
+            'Transform Awards': { category: 'Brand, Reputation & Communications', org: 'Transform Magazine', website: 'https://www.transformmagazine.net/awards', type: 'Application-Based (Competitive)', reason: 'Brand transformation' },
+            'Effie Awards MENA': { category: 'Brand, Reputation & Communications', org: 'Effie Worldwide', website: 'https://mena.effie.org/', type: 'Application-Based (Competitive)', reason: 'Marketing effectiveness' },
+            'Cannes Lions': { category: 'Brand, Reputation & Communications', org: 'LIONS / Ascential', website: 'https://www.canneslions.com/', type: 'Application-Based (Competitive)', reason: 'Creative excellence' },
+            'World Branding Awards': { category: 'Brand, Reputation & Communications', org: 'World Branding Forum', website: 'https://awards.brandingforum.org/', type: 'Survey-Based / Data-driven', reason: 'Global brand recognition' },
+            'IFMA Innovation Award': { category: 'Facilities & Workplace Excellence', org: 'International Facility Management Association', website: 'https://awards.ifma.org/nomination/', type: 'Nomination / Application', reason: 'Global FM excellence' },
+            'IWFM Impact Awards': { category: 'Facilities & Workplace Excellence', org: 'Institute of Workplace and Facilities Management', website: 'https://iwfmawards.org/', type: 'Application-Based (Competitive)', reason: 'Workplace innovation' },
+            'World Workplace Asia-Pacific Awards': { category: 'Facilities & Workplace Excellence', org: 'IFMA Asia-Pacific', website: 'https://worldworkplaceasiapacific.ifma.org/', type: 'Application-Based (Competitive)', reason: 'Regional FM recognition' },
+            'Global FM Awards of Excellence': { category: 'Facilities & Workplace Excellence', org: 'Global FM Association', website: 'https://www.globalfm.org/', type: 'Nomination by FM Associations', reason: 'International FM best practice' },
+            'SSON Impact Awards': { category: 'Shared Services & Enterprise Operations', org: 'Shared Services & Outsourcing Network', website: 'https://www.ssonetwork.com/awards', type: 'Application-Based (Competitive)', reason: 'Shared services excellence' },
+            "SSON World's Best GBS": { category: 'Shared Services & Enterprise Operations', org: 'SSON Research & Analytics', website: 'https://www.sson-analytics.com/worlds-best', type: 'Assessment-Based (Benchmarking Study)', reason: 'GBS benchmarking' },
+            'NextGen Shared Services Awards': { category: 'Shared Services & Enterprise Operations', org: 'Industry Events Middle East', website: 'https://nextgenss.me/', type: 'Application-Based (Competitive)', reason: 'Regional GCC/MENA GBS' },
+            'SSF Excellence Awards': { category: 'Shared Services & Enterprise Operations', org: 'SSF Global (Shared Services Forum)', website: 'https://excellenceawards.sharedservicesforum.com', type: 'Application-Based (Competitive)', reason: 'GCC/GBS (India focus)' },
+            'World CEO Awards': { category: 'Leadership Excellence', org: 'World CEO Forum', website: 'https://worldceoawards.com/', type: 'Nomination / Application', reason: 'Executive recognition' },
+            'Argaam Best CEOs': { category: 'Leadership Excellence', org: 'Argaam', website: 'https://awards.argaam.com/', type: 'Editorial / Research-Based', reason: 'MENA regional leadership' },
+            'AsianInvestor Individual Awards': { category: 'Leadership Excellence', org: 'AsianInvestor', website: 'https://www.asianinvestor.net/awards', type: 'Nomination / Application', reason: 'Investment leadership' },
+            'ETCFO Awards': { category: 'Leadership Excellence', org: 'ETCFO (Economic Times)', website: 'https://etcfo.com/awards', type: 'Editorial / Nomination', reason: 'CFO excellence' },
+            'Fortune Best Workplaces (Financial Services)': { category: 'Workplace & Employer Brand', org: 'Fortune / Great Place to Work', website: 'https://www.greatplacetowork.com/', type: 'Survey-Based / Data-driven', reason: 'Institutional employer brand' },
+            'Infrastructure Investor Awards': { category: 'Sector-Specific Expansion', org: 'Infrastructure Investor', website: 'https://www.infrastructureinvestor.com/awards', type: 'Application-Based (Competitive)', reason: 'Infrastructure portfolio' }
+        };
+
+        // Complete award database
+        const awardDatabase = {
+            'Argaam Best CEOs of the Year': { org: 'Argaam', website: 'https://awards.argaam.com/', category: 'Leadership Excellence', type: 'Editorial / Research-Based' },
+            'AsianInvestor Asset Management Awards': { org: 'AsianInvestor', website: 'https://www.asianinvestor.net/awards', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Nomination / Application' },
+            'AsianInvestor Individual Awards': { org: 'AsianInvestor', website: 'https://www.asianinvestor.net/awards', category: 'Leadership Excellence', type: 'Nomination / Application' },
+            'Effie Awards MENA': { org: 'Effie Worldwide', website: 'https://mena.effie.org/', category: 'Brand, Reputation & Communications', type: 'Application-Based (Competitive)' },
+            'ETCFO Awards': { org: 'ETCFO (Economic Times)', website: 'https://etcfo.com/awards', category: 'Leadership Excellence', type: 'Editorial / Nomination' },
+            'Forbes Global 2000': { org: 'Forbes', website: 'https://www.forbes.com/lists/global2000/', category: 'Thought Leadership & Global Prestige', type: 'Editorial / Data-driven Ranking' },
+            'Fortune Best Workplaces (Financial Services)': { org: 'Fortune / Great Place to Work', website: 'https://www.greatplacetowork.com/', category: 'Workplace & Employer Brand', type: 'Survey-Based / Data-driven' },
+            'Fortune Change the World List': { org: 'Fortune Media', website: 'https://fortune.com/change-the-world/', category: 'Thought Leadership & Global Prestige', type: 'Editorial / Nomination' },
+            'Fortune Global 500': { org: 'Fortune Media', website: 'https://fortune.com/ranking/global-500/', category: 'Thought Leadership & Global Prestige', type: 'Editorial / Data-driven Ranking' },
+            'Global Banking & Finance Awards': { org: 'Global Banking & Finance Review', website: 'https://www.globalbankingandfinance.com/', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Nomination / Application' },
+            'Global FM Awards of Excellence': { org: 'Global FM Association', website: 'https://www.globalfm.org/', category: 'Facilities & Workplace Excellence', type: 'Nomination by FM Associations' },
+            'Global SWF Fund of the Year': { org: 'Global SWF', website: 'https://globalswf.com/', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Nomination / Application' },
+            'Global SWF Governance, Sustainability, Resilience (GSR) Award': { org: 'Global SWF', website: 'https://globalswf.com/gsr', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Assessment-Based (Research)' },
+            'Global SWF Top Performing Fund': { org: 'Global SWF', website: 'https://globalswf.com/', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Assessment-Based (Research)' },
+            'World Workplace Asia-Pacific Best of FM Awards': { org: 'IFMA Asia-Pacific', website: 'https://worldworkplaceasiapacific.ifma.org/', category: 'Facilities & Workplace Excellence', type: 'Application-Based (Competitive)' },
+            'NextGen Shared Services Awards (GCC/MENA)': { org: 'Industry Events Middle East', website: 'https://nextgenss.me/', category: 'Shared Services & Enterprise Operations', type: 'Application-Based (Competitive)' },
+            'Infrastructure Investor Awards': { org: 'Infrastructure Investor', website: 'https://www.infrastructureinvestor.com/awards', category: 'Sector-Specific Expansion', type: 'Application-Based (Competitive)' },
+            'IWFM Impact Awards': { org: 'Institute of Workplace and Facilities Management', website: 'https://iwfmawards.org/', category: 'Facilities & Workplace Excellence', type: 'Application-Based (Competitive)' },
+            'IFMA Innovation Award (World Workplace)': { org: 'International Facility Management Association', website: 'https://awards.ifma.org/nomination/', category: 'Facilities & Workplace Excellence', type: 'Nomination / Application' },
+            'IPMA Global Awards': { org: 'International Project Management Association', website: 'https://awards.ipma.world/', category: 'Project & Program Management Excellence', type: 'Application-Based (Competitive)' },
+            'Cannes Lions International Festival of Creativity': { org: 'LIONS / Ascential', website: 'https://www.canneslions.com/', category: 'Brand, Reputation & Communications', type: 'Application-Based (Competitive)' },
+            'RAAI Index (Responsible Asset Allocator Initiative)': { org: 'New America & Tufts University', website: 'https://www.newamerica.org/', category: 'Thought Leadership & Global Prestige', type: 'Assessment-Based (Research)' },
+            'PMI PMO of the Year Award': { org: 'Project Management Institute (PMI)', website: 'https://www.pmi.org/about/awards/pmo-award', category: 'Project & Program Management Excellence', type: 'Application-Based (Competitive)' },
+            'PMI Project of the Year Award': { org: 'Project Management Institute (PMI)', website: 'https://www.pmi.org/about/awards/professional-awards', category: 'Project & Program Management Excellence', type: 'Application-Based (Competitive)' },
+            'SSON Impact Awards': { org: 'Shared Services & Outsourcing Network', website: 'https://www.ssonetwork.com/awards', category: 'Shared Services & Enterprise Operations', type: 'Application-Based (Competitive)' },
+            'SSF Excellence Awards': { org: 'SSF Global (Shared Services Forum)', website: 'https://excellenceawards.sharedservicesforum.com', category: 'Shared Services & Enterprise Operations', type: 'Application-Based (Competitive)' },
+            "SSON World's Best GBS Award": { org: 'SSON Research & Analytics', website: 'https://www.sson-analytics.com/worlds-best', category: 'Shared Services & Enterprise Operations', type: 'Assessment-Based (Benchmarking Study)' },
+            'Transform Awards': { org: 'Transform Magazine', website: 'https://www.transformmagazine.net/awards', category: 'Brand, Reputation & Communications', type: 'Application-Based (Competitive)' },
+            'World Branding Awards': { org: 'World Branding Forum', website: 'https://awards.brandingforum.org/', category: 'Brand, Reputation & Communications', type: 'Survey-Based / Data-driven' },
+            'World CEO Awards': { org: 'World CEO Forum', website: 'https://worldceoawards.com/', category: 'Leadership Excellence', type: 'Nomination / Application' },
+            'International Financial Services Awards': { org: 'World Finance', website: 'https://www.worldfinance.com/awards', category: 'Sovereign Wealth Fund & Institutional Excellence', type: 'Editorial / Nomination' }
+        };
+
+        const awardCategories = [
+            'Sovereign Wealth Fund & Institutional Excellence',
+            'Thought Leadership & Global Prestige',
+            'Project & Program Management Excellence',
+            'Brand, Reputation & Communications',
+            'Facilities & Workplace Excellence',
+            'Shared Services & Enterprise Operations',
+            'Leadership Excellence',
+            'Workplace & Employer Brand',
+            'Sector-Specific Expansion',
+            'Other'
+        ];
+
+        const allAwardNames = Object.keys(awardDatabase).sort();
+        allAwardNames.push('Other');
+
+        let isAutoApproved = false;
+
+        // SPONSORSHIP DATA - exact from PIF Excel scorecards (Oct 2025)
+        // Scoring logic: weighted average per question (score * priority_weight),
+        // summed across all questions, then expressed as % of max possible = final score /100
+        // Priority: Very High=5, High=4, Medium=3, Low=2
+
+        const sponsorshipData = {
+            'Sports & Entertainment': {
+                Global: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 3,
+                          fields: [
+                            { id:'seg_live', label:'Live Attendance per Annum', priority:3, options:[
+                                {t:'500k+',s:10},{t:'400,000 - 499,999',s:9},{t:'300,000 - 399,999',s:8},{t:'200,000 - 299,999',s:7},
+                                {t:'150,000 - 199,999',s:6},{t:'100,000 - 149,999',s:5},{t:'75,000 - 99,999',s:4},
+                                {t:'50,000 - 74,999',s:3},{t:'25,000 - 49,999',s:2},{t:'< 25,000',s:1}]},
+                            { id:'seg_broadcast', label:'Annual Total Broadcast Reach', priority:5, options:[
+                                {t:'100m+',s:10},{t:'90m+',s:9},{t:'80m+',s:8},{t:'70m+',s:7},{t:'60m+',s:6},
+                                {t:'50m+',s:5},{t:'40m+',s:4},{t:'30m+',s:3},{t:'20m+',s:2},{t:'10m+',s:1}]},
+                            { id:'seg_social', label:'Total Social Media Following', priority:4, options:[
+                                {t:'15m+',s:10},{t:'12.5m - 14.9m',s:9},{t:'10m - 12.4m',s:8},{t:'8m - 9.9m',s:7},
+                                {t:'6m - 7.9m',s:6},{t:'4m - 5.9m',s:5},{t:'3m - 3.9m',s:4},
+                                {t:'2m - 2.9m',s:3},{t:'1m - 1.9m',s:2},{t:'0 - 1m',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 4,
+                          fields: [
+                            { id:'seg_markets', label:'Target Markets (On-Ground Events)', priority:4, options:[
+                                {t:'All 4 priority markets (US, UK, KSA, China)',s:10},{t:'Min 3 priority markets',s:8},
+                                {t:'Min 2 priority markets',s:6},{t:'Min 1 priority market',s:4},
+                                {t:'No priority markets but 1+ secondary',s:3},{t:'No priority or secondary markets',s:1}]},
+                            { id:'seg_audience', label:'Audience Demographics', priority:4, options:[
+                                {t:'Most affluent - Top 10% income (A)',s:10},{t:'Affluent - Top 11-25% income (B)',s:8},
+                                {t:'Average Mid - 26-40% (C1)',s:6},{t:'Below average - 40-60% (C2)',s:4},
+                                {t:'Bottom 40% (DE)',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'seg_tier', label:'Partnership Tier Proposed', priority:4, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'seg_roi', label:'Anticipated Media Value ROI', priority:5, options:[
+                                {t:'5:1 ROI',s:10},{t:'3:1 ROI',s:8},{t:'2:1 ROI',s:6},
+                                {t:'1:1 ROI',s:4},{t:'< 1:1 ROI',s:2},{t:'Limited ROI / Unknown',s:1}]},
+                            { id:'seg_narrative', label:'Narrative Alignment with PIF Values', priority:4, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'seg_talent', label:'Talent Access', priority:3, options:[
+                                {t:'Access incl. unrestricted image rights & IP',s:10},
+                                {t:'Access incl. restricted image rights & IP',s:8},
+                                {t:'Access excl. individual image rights',s:6},
+                                {t:'Access for events / below the line activity',s:4},
+                                {t:'No access to talent',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 4,
+                          fields: [
+                            { id:'seg_db', label:'Opted-In Business Database Size', priority:3, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'seg_hosp', label:'Hospitality Level', priority:3, options:[
+                                {t:'Exclusive branded area with private entrance',s:10},
+                                {t:'Exclusive unbranded area with private entrance',s:8},
+                                {t:'Exclusive area within main event hospitality',s:6},
+                                {t:'Access to common hospitality area',s:4},
+                                {t:'Access to GA+ ticketing',s:2},{t:'No hospitality available',s:1}]},
+                            { id:'seg_vip', label:'VIP Customised Experiences', priority:4, options:[
+                                {t:"World-class money-can't-buy custom experiences",s:10},
+                                {t:"Unique money-can't-buy experiences",s:8},
+                                {t:'Curated experiences in line with other partners',s:6},
+                                {t:'Experiences available to general public',s:3},
+                                {t:'No access to experiences',s:1}]}
+                          ]},
+                        { title: 'KSA & EMPLOYEES', weight: 3,
+                          fields: [
+                            { id:'seg_emp', label:'Employee Engagement Programmes', priority:3, options:[
+                                {t:'Structured programme with details included',s:10},
+                                {t:'Structured programme (no details)',s:8},
+                                {t:'Ability to develop opportunities (ideas included)',s:6},
+                                {t:'Ability to develop opportunities (no ideas)',s:4},
+                                {t:'No specific employee engagement opportunities',s:1}]},
+                            { id:'seg_ksa', label:'KSA Value-Add (Impact Initiatives)', priority:3, options:[
+                                {t:'5 KSA impact initiatives included',s:10},{t:'4 KSA impact initiatives included',s:8},
+                                {t:'3 KSA impact initiatives included',s:6},{t:'2 KSA impact initiatives included',s:4},
+                                {t:'1 KSA impact initiative included',s:2},{t:'None included',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 3,
+                          fields: [
+                            { id:'seg_partners', label:'Stature of Existing Official Partners', priority:3, options:[
+                                {t:'Majority global multinationals ($100BN+ turnover)',s:10},
+                                {t:'Majority multinationals ($50BN+ turnover)',s:9},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:8},
+                                {t:'Majority regional ($10BN+ turnover)',s:7},{t:'Majority regional ($5BN+ turnover)',s:6},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:5},{t:'Majority national ($1BN+ turnover)',s:4},
+                                {t:'Majority local ($500M+ turnover)',s:3},{t:'Turnover under $500m',s:2},{t:'No Partners',s:1}]},
+                            { id:'seg_employees', label:'Full-Time Employees at Rights Holder', priority:3, options:[
+                                {t:'200+',s:10},{t:'150-200',s:9},{t:'126-150',s:8},{t:'101-125',s:7},{t:'81-100',s:6},
+                                {t:'61-80',s:5},{t:'41-60',s:4},{t:'21-40',s:3},{t:'11-20',s:2},{t:'0-10',s:1}]}
+                          ]}
+                    ]
+                },
+                Domestic: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 4,
+                          fields: [
+                            { id:'sed_live', label:'Live Attendance per Annum', priority:4, options:[
+                                {t:'500k+',s:10},{t:'400,000 - 499,999',s:9},{t:'300,000 - 399,999',s:8},{t:'200,000 - 299,999',s:7},
+                                {t:'150,000 - 199,999',s:6},{t:'100,000 - 149,999',s:5},{t:'75,000 - 99,999',s:4},
+                                {t:'50,000 - 74,999',s:3},{t:'25,000 - 49,999',s:2},{t:'< 25,000',s:1}]},
+                            { id:'sed_broadcast', label:'Annual Total Broadcast Reach', priority:5, options:[
+                                {t:'100m+',s:10},{t:'90m+',s:9},{t:'80m+',s:8},{t:'70m+',s:7},{t:'60m+',s:6},
+                                {t:'50m+',s:5},{t:'40m+',s:4},{t:'30m+',s:3},{t:'20m+',s:2},{t:'10m+',s:1}]},
+                            { id:'sed_social', label:'Total Social Media Following', priority:4, options:[
+                                {t:'15m+',s:10},{t:'12.5m - 14.9m',s:9},{t:'10m - 12.4m',s:8},{t:'8m - 9.9m',s:7},
+                                {t:'6m - 7.9m',s:6},{t:'4m - 5.9m',s:5},{t:'3m - 3.9m',s:4},
+                                {t:'2m - 2.9m',s:3},{t:'1m - 1.9m',s:2},{t:'0 - 1m',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 4,
+                          fields: [
+                            { id:'sed_ksa_presence', label:'KSA Presence / Mass Participation', priority:4, options:[
+                                {t:'Multiple events/stages in KSA annually',s:10},{t:'At least one event or stage in KSA',s:7},
+                                {t:'Future possibility of staging in KSA',s:5},
+                                {t:'Event/stage in accessible country near KSA',s:2},
+                                {t:'No events/stages in or near KSA',s:1}]},
+                            { id:'sed_audience', label:'Audience Demographics', priority:4, options:[
+                                {t:'Most affluent - Top 10% income (A)',s:10},{t:'Affluent - Top 11-25% income (B)',s:8},
+                                {t:'Average Mid - 26-40% (C1)',s:6},{t:'Below average - 40-60% (C2)',s:4},
+                                {t:'Bottom 40% (DE)',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'sed_tier', label:'Partnership Tier Proposed', priority:4, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'sed_roi', label:'Anticipated Media Value ROI', priority:5, options:[
+                                {t:'5:1 ROI',s:10},{t:'3:1 ROI',s:8},{t:'2:1 ROI',s:6},
+                                {t:'1:1 ROI',s:4},{t:'< 1:1 ROI',s:2},{t:'Limited ROI / Unknown',s:1}]},
+                            { id:'sed_narrative', label:'Narrative Alignment with PIF Values', priority:4, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'sed_talent', label:'Talent Access', priority:3, options:[
+                                {t:'Access incl. unrestricted image rights & IP',s:10},
+                                {t:'Access incl. restricted image rights & IP',s:8},
+                                {t:'Access excl. individual image rights',s:6},
+                                {t:'Access for events / below the line activity',s:4},
+                                {t:'No access to talent',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 3,
+                          fields: [
+                            { id:'sed_db', label:'Opted-In Business Database Size', priority:3, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'sed_hosp', label:'Hospitality Level', priority:3, options:[
+                                {t:'Exclusive branded area with private entrance',s:10},
+                                {t:'Exclusive unbranded area with private entrance',s:8},
+                                {t:'Exclusive area within main event hospitality',s:6},
+                                {t:'Access to common hospitality area',s:4},
+                                {t:'No hospitality available',s:1}]},
+                            { id:'sed_vip', label:'VIP Customised Experiences', priority:4, options:[
+                                {t:"World-class money-can't-buy custom experiences",s:10},
+                                {t:"Unique money-can't-buy experiences",s:8},
+                                {t:'Curated experiences in line with other partners',s:6},
+                                {t:'Experiences available to general public',s:3},
+                                {t:'No access to experiences',s:1}]}
+                          ]},
+                        { title: 'KSA & EMPLOYEES', weight: 4,
+                          fields: [
+                            { id:'sed_emp', label:'Employee Engagement Programmes', priority:4, options:[
+                                {t:'Structured programme with details included',s:10},
+                                {t:'Structured programme (no details)',s:8},
+                                {t:'Ability to develop opportunities (ideas included)',s:6},
+                                {t:'Ability to develop opportunities (no ideas)',s:4},
+                                {t:'No specific employee engagement opportunities',s:1}]},
+                            { id:'sed_vision', label:'Vision 2030 / KSA Value-Add', priority:4, options:[
+                                {t:'5 KSA impact initiatives included',s:10},{t:'4 KSA impact initiatives included',s:8},
+                                {t:'3 KSA impact initiatives included',s:6},{t:'2 KSA impact initiatives included',s:4},
+                                {t:'1 KSA impact initiative included',s:2},{t:'None included',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 3,
+                          fields: [
+                            { id:'sed_partners', label:'Stature of Existing Official Partners', priority:3, options:[
+                                {t:'Majority global multinationals ($100BN+ turnover)',s:10},
+                                {t:'Majority multinationals ($50BN+ turnover)',s:9},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:8},
+                                {t:'Majority regional ($10BN+ turnover)',s:7},{t:'Majority regional ($5BN+ turnover)',s:6},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:5},{t:'Majority national ($1BN+ turnover)',s:4},
+                                {t:'Majority local ($500M+ turnover)',s:3},{t:'Turnover under $500m',s:2},{t:'No Partners',s:1}]},
+                            { id:'sed_employees', label:'Full-Time Employees at Rights Holder', priority:3, options:[
+                                {t:'200+',s:10},{t:'150-200',s:9},{t:'126-150',s:8},{t:'101-125',s:7},{t:'81-100',s:6},
+                                {t:'61-80',s:5},{t:'41-60',s:4},{t:'21-40',s:3},{t:'11-20',s:2},{t:'0-10',s:1}]}
+                          ]}
+                    ]
+                }
+            },
+            'Arts & Culture': {
+                Global: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 3,
+                          fields: [
+                            { id:'acg_live', label:'In-Person Attendance per Annum', priority:3, options:[
+                                {t:'10m+',s:10},{t:'7.5m+',s:9},{t:'5m+',s:8},{t:'2.5m+',s:7},{t:'1m+',s:6},
+                                {t:'750k+',s:5},{t:'500k+',s:4},{t:'250k+',s:3},{t:'100k+',s:2},{t:'50k+',s:1}]},
+                            { id:'acg_social', label:'Total Social Media Following', priority:3, options:[
+                                {t:'5m+',s:10},{t:'4m+',s:9},{t:'3m+',s:8},{t:'2m+',s:7},{t:'1m+',s:6},
+                                {t:'750k+',s:5},{t:'500k+',s:4},{t:'250k+',s:3},{t:'100k+',s:2},{t:'50k+',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 5,
+                          fields: [
+                            { id:'acg_members', label:'Paying Membership Body of Institution', priority:5, options:[
+                                {t:'15,000+ paying members',s:10},{t:'> 15,000 paying members',s:8},
+                                {t:'> 10,000 paying members',s:6},{t:'> 5,000 paying members',s:4},
+                                {t:'> 2,500 paying members',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'acg_tier', label:'Partnership Tier Proposed', priority:3, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'acg_narrative', label:'Narrative Alignment with PIF Values', priority:5, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'acg_community', label:'Community Impact (People Positively Impacted)', priority:4, options:[
+                                {t:'5000+',s:10},{t:'2500+',s:9},{t:'1500+',s:8},{t:'1000+',s:7},{t:'750+',s:6},
+                                {t:'500+',s:5},{t:'250+',s:4},{t:'100+',s:3},{t:'50+',s:2},{t:'No programme',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 4,
+                          fields: [
+                            { id:'acg_db', label:'Opted-In Business Database Size', priority:4, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'acg_networking', label:'Networking & Stakeholder Introductions', priority:5, options:[
+                                {t:'12+ opportunities; 10+ introductions proactively facilitated',s:10},
+                                {t:'8+ opportunities; introductions facilitated on request',s:8},
+                                {t:'2 opportunities; full stakeholder list shared',s:6},
+                                {t:'Limited networking; partial stakeholder list',s:4},
+                                {t:'Unsure',s:2},{t:'No access available',s:1}]},
+                            { id:'acg_vip', label:'VIP Customised Experiences', priority:4, options:[
+                                {t:"World-class money-can't-buy custom experiences",s:10},
+                                {t:"Unique money-can't-buy experiences",s:8},
+                                {t:'Curated experiences in line with other partners',s:6},
+                                {t:'Experiences available to general public',s:3},
+                                {t:'No access to experiences',s:1}]}
+                          ]},
+                        { title: 'KSA & EMPLOYEES', weight: 2,
+                          fields: [
+                            { id:'acg_emp', label:'Employee Engagement Programmes', priority:2, options:[
+                                {t:'Structured programme with details included',s:10},
+                                {t:'Structured programme (no details)',s:8},
+                                {t:'Ability to develop opportunities (ideas included)',s:6},
+                                {t:'Ability to develop opportunities (no ideas)',s:4},
+                                {t:'No specific employee engagement opportunities',s:1}]},
+                            { id:'acg_ksa', label:'KSA Knowledge & Expertise Value-Add', priority:2, options:[
+                                {t:'5 KSA impact initiatives included',s:10},{t:'4 KSA impact initiatives included',s:8},
+                                {t:'3 KSA impact initiatives included',s:6},{t:'2 KSA impact initiatives included',s:4},
+                                {t:'1 KSA impact initiative included',s:2},{t:'None included',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 3,
+                          fields: [
+                            { id:'acg_partners', label:'Stature of Existing Official Partners', priority:4, options:[
+                                {t:'Majority global multinationals ($100BN+ turnover)',s:10},
+                                {t:'Majority multinationals ($50BN+ turnover)',s:9},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:8},
+                                {t:'Majority regional ($10BN+ turnover)',s:7},{t:'Majority regional ($5BN+ turnover)',s:6},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:5},{t:'Majority national ($1BN+ turnover)',s:4},
+                                {t:'Majority local ($500M+ turnover)',s:3},{t:'Turnover under $500m',s:2},{t:'No Partners',s:1}]},
+                            { id:'acg_employees', label:'Full-Time Employees at Rights Holder', priority:2, options:[
+                                {t:'100+',s:10},{t:'75+',s:8},{t:'50+',s:6},{t:'25+',s:4},{t:'10+',s:2},{t:'< 10',s:1}]}
+                          ]}
+                    ]
+                },
+                Domestic: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 4,
+                          fields: [
+                            { id:'acd_live', label:'In-Person Attendance per Annum', priority:4, options:[
+                                {t:'10m+',s:10},{t:'7.5m+',s:9},{t:'5m+',s:8},{t:'2.5m+',s:7},{t:'1m+',s:6},
+                                {t:'750k+',s:5},{t:'500k+',s:4},{t:'250k+',s:3},{t:'100k+',s:2},{t:'50k+',s:1}]},
+                            { id:'acd_social', label:'Total Social Media Following', priority:3, options:[
+                                {t:'5m+',s:10},{t:'4m+',s:9},{t:'3m+',s:8},{t:'2m+',s:7},{t:'1m+',s:6},
+                                {t:'750k+',s:5},{t:'500k+',s:4},{t:'250k+',s:3},{t:'100k+',s:2},{t:'50k+',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 3,
+                          fields: [
+                            { id:'acd_members', label:'Paying Membership Body of Institution', priority:3, options:[
+                                {t:'15,000+ paying members',s:10},{t:'> 15,000 paying members',s:8},
+                                {t:'> 10,000 paying members',s:6},{t:'> 5,000 paying members',s:4},
+                                {t:'> 2,500 paying members',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'acd_tier', label:'Partnership Tier Proposed', priority:4, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'acd_narrative', label:'Narrative Alignment with PIF Values', priority:5, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'acd_community', label:'Community Impact (People Positively Impacted)', priority:5, options:[
+                                {t:'5000+',s:10},{t:'2500+',s:9},{t:'1500+',s:8},{t:'1000+',s:7},{t:'750+',s:6},
+                                {t:'500+',s:5},{t:'250+',s:4},{t:'100+',s:3},{t:'50+',s:2},{t:'No programme',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 3,
+                          fields: [
+                            { id:'acd_db', label:'Opted-In Business Database Size', priority:3, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'acd_networking', label:'Networking & Stakeholder Introductions', priority:4, options:[
+                                {t:'12+ opportunities; 10+ introductions proactively facilitated',s:10},
+                                {t:'8+ opportunities; introductions facilitated on request',s:8},
+                                {t:'2 opportunities; full stakeholder list shared',s:6},
+                                {t:'Limited networking; partial stakeholder list',s:4},
+                                {t:'Unsure',s:2},{t:'No access available',s:1}]},
+                            { id:'acd_vip', label:'VIP Customised Experiences', priority:4, options:[
+                                {t:"World-class money-can't-buy custom experiences",s:10},
+                                {t:"Unique money-can't-buy experiences",s:8},
+                                {t:'Curated experiences in line with other partners',s:6},
+                                {t:'Experiences available to general public',s:3},
+                                {t:'No access to experiences',s:1}]}
+                          ]},
+                        { title: 'KSA & EMPLOYEES', weight: 4,
+                          fields: [
+                            { id:'acd_emp', label:'Employee Engagement Programmes', priority:4, options:[
+                                {t:'Structured programme with details included',s:10},
+                                {t:'Structured programme (no details)',s:8},
+                                {t:'Ability to develop opportunities (ideas included)',s:6},
+                                {t:'Ability to develop opportunities (no ideas)',s:4},
+                                {t:'No specific employee engagement opportunities',s:1}]},
+                            { id:'acd_ksa', label:'KSA Knowledge & Expertise Value-Add', priority:4, options:[
+                                {t:'5 KSA impact initiatives included',s:10},{t:'4 KSA impact initiatives included',s:8},
+                                {t:'3 KSA impact initiatives included',s:6},{t:'2 KSA impact initiatives included',s:4},
+                                {t:'1 KSA impact initiative included',s:2},{t:'None included',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 2,
+                          fields: [
+                            { id:'acd_partners', label:'Stature of Existing Official Partners', priority:2, options:[
+                                {t:'Majority global multinationals ($100BN+ turnover)',s:10},
+                                {t:'Majority multinationals ($50BN+ turnover)',s:9},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:8},
+                                {t:'Majority regional ($10BN+ turnover)',s:7},{t:'Majority regional ($5BN+ turnover)',s:6},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:5},{t:'Majority national ($1BN+ turnover)',s:4},
+                                {t:'Majority local ($500M+ turnover)',s:3},{t:'Turnover under $500m',s:2},{t:'No Partners',s:1}]},
+                            { id:'acd_employees', label:'Full-Time Employees at Rights Holder', priority:2, options:[
+                                {t:'100+',s:10},{t:'75+',s:8},{t:'50+',s:6},{t:'25+',s:4},{t:'10+',s:2},{t:'< 10',s:1}]}
+                          ]}
+                    ]
+                }
+            },
+            'Thought Leadership': {
+                Global: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 3,
+                          fields: [
+                            { id:'tlg_live', label:'Total Live Attendance in Proposal', priority:3, options:[
+                                {t:'5000+',s:10},{t:'3000+',s:9},{t:'2000+',s:8},{t:'1000+',s:7},{t:'750+',s:6},
+                                {t:'500+',s:5},{t:'250+',s:4},{t:'100+',s:3},{t:'50+',s:2},{t:'< 50',s:1}]},
+                            { id:'tlg_reach', label:'Total Combined Reach (publications, digital, social)', priority:2, options:[
+                                {t:'1m+',s:10},{t:'750k+',s:9},{t:'500k+',s:8},{t:'250k+',s:7},{t:'150k+',s:6},
+                                {t:'100k+',s:5},{t:'75k+',s:4},{t:'50k+',s:3},{t:'< 50k',s:2},{t:'No channels',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 4,
+                          fields: [
+                            { id:'tlg_markets', label:'On-Ground Market Presence', priority:4, options:[
+                                {t:'All 4 priority markets (US, UK, KSA, China)',s:10},{t:'Min 3 priority markets',s:8},
+                                {t:'Min 2 priority markets',s:6},{t:'Min 1 priority market',s:4},
+                                {t:'No priority but 2+ secondary markets',s:3},{t:'No priority or secondary markets',s:1}]},
+                            { id:'tlg_audience', label:'Target Audience Profile', priority:5, options:[
+                                {t:'Board Member',s:10},{t:'C-Suite / Executive',s:8},
+                                {t:'Senior Management / Director',s:6},{t:'Management',s:4},
+                                {t:'Junior / Graduates',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'tlg_tier', label:'Partnership Tier Proposed', priority:3, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'tlg_narrative', label:'Narrative Alignment with PIF Values', priority:5, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'tlg_programming', label:'Programming Opportunities (Influence Event Agenda)', priority:5, options:[
+                                {t:'Ability to curate agenda element with leading PIF speaker placements',s:10},
+                                {t:'Ability to co-curate one element and hold speaking positions',s:8},
+                                {t:'Ability to include PIF speaker on a panel discussion',s:5},
+                                {t:'Some opportunity to input into event proceedings',s:3},
+                                {t:'No input into event programming',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 3,
+                          fields: [
+                            { id:'tlg_db', label:'Opted-In Business Database Size', priority:3, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'tlg_networking', label:'Networking & Stakeholder Introductions', priority:4, options:[
+                                {t:'PIF co-hosts and co-curates a networking / side event',s:10},
+                                {t:'Multiple networking; proactive introductions facilitated',s:8},
+                                {t:'Open networking; full attendee list / app shared',s:6},
+                                {t:'Limited opportunity to network',s:3},
+                                {t:'No opportunity to network',s:1}]},
+                            { id:'tlg_vip', label:'VIP Customised Experiences', priority:3, options:[
+                                {t:"World-class money-can't-buy experience",s:10},
+                                {t:'Curated experiences in line with other partners',s:5},
+                                {t:'No access to VIP experiences',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 3,
+                          fields: [
+                            { id:'tlg_partners', label:'Stature of Existing Official Partners', priority:4, options:[
+                                {t:'Majority multinationals ($50BN+ turnover)',s:10},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:9},
+                                {t:'Majority regional ($10BN+ turnover)',s:8},{t:'Majority regional ($5BN+ turnover)',s:7},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:6},{t:'Majority national ($1BN+ turnover)',s:5},
+                                {t:'Majority local ($500M+ turnover)',s:4},{t:'Majority local ($250M+ turnover)',s:3},
+                                {t:'Turnover under $250m',s:2},{t:'No Partners',s:1}]},
+                            { id:'tlg_employees', label:'Full-Time Employees at Rights Holder', priority:2, options:[
+                                {t:'50+',s:10},{t:'40+',s:8},{t:'30+',s:6},{t:'20+',s:4},{t:'10+',s:2},{t:'< 10',s:1}]}
+                          ]}
+                    ]
+                },
+                Domestic: {
+                    basicFields: [
+                        { id: 'spPropertyName', label: 'Property / Sponsorship Name', type: 'text', required: true },
+                        { id: 'spOrg', label: 'Rights Holder Organisation', type: 'text' },
+                        { id: 'spCountry', label: 'Primary Country', type: 'text' },
+                        { id: 'spStartDate', label: 'Sponsorship Start Date', type: 'date' },
+                        { id: 'spEndDate', label: 'Sponsorship End Date', type: 'date' },
+                        { id: 'spInvestment', label: 'Requested Investment (USD/yr)', type: 'number' }
+                    ],
+                    categories: [
+                        { title: 'REACH', weight: 3,
+                          fields: [
+                            { id:'tld_live', label:'In-Person Attendance per Annum', priority:3, options:[
+                                {t:'5000+',s:10},{t:'3000+',s:9},{t:'2000+',s:8},{t:'1000+',s:7},{t:'750+',s:6},
+                                {t:'500+',s:5},{t:'250+',s:4},{t:'100+',s:3},{t:'50+',s:2},{t:'< 50',s:1}]},
+                            { id:'tld_social', label:'Total Social Media Following', priority:3, options:[
+                                {t:'1m+',s:10},{t:'750k+',s:9},{t:'500k+',s:8},{t:'250k+',s:7},{t:'150k+',s:6},
+                                {t:'100k+',s:5},{t:'75k+',s:4},{t:'50k+',s:3},{t:'< 50k',s:2},{t:'No channels',s:1}]}
+                          ]},
+                        { title: 'AUDIENCE ALIGNMENT', weight: 5,
+                          fields: [
+                            { id:'tld_audience', label:'Target Audience Profile', priority:5, options:[
+                                {t:'Board Member',s:10},{t:'C-Suite / Executive',s:8},
+                                {t:'Senior Management / Director',s:6},{t:'Management',s:4},
+                                {t:'Junior / Graduates',s:2},{t:'Unknown',s:1}]}
+                          ]},
+                        { title: 'NARRATIVE & BRAND ASSETS', weight: 4,
+                          fields: [
+                            { id:'tld_tier', label:'Partnership Tier Proposed', priority:4, options:[
+                                {t:'Top tier (Title / sole naming rights)',s:10},
+                                {t:'Second tier / Principal or Presenting Partner (up to 3)',s:8},
+                                {t:'Third tier / Official Partner',s:5},
+                                {t:'Fourth tier / Official Supporter or Supplier',s:3},
+                                {t:'Unbranded / Unknown / Not specified',s:1}]},
+                            { id:'tld_narrative', label:'Narrative Alignment with PIF Values', priority:5, options:[
+                                {t:'4/4 key values feature in top 5',s:10},{t:'3/4 key values feature in top 5',s:8},
+                                {t:'2/4 key values feature in top 5',s:6},{t:'1/4 values feature in top 5',s:4},
+                                {t:'0/4 values feature in top 5',s:1}]},
+                            { id:'tld_programming', label:'Programming Opportunities (Influence Event Agenda)', priority:5, options:[
+                                {t:'Ability to curate agenda element with leading PIF speaker placements',s:10},
+                                {t:'Ability to co-curate one element and hold speaking positions',s:8},
+                                {t:'Ability to include PIF speaker on a panel discussion',s:5},
+                                {t:'Some opportunity to input into event proceedings',s:3},
+                                {t:'No input into event programming',s:1}]}
+                          ]},
+                        { title: 'BUSINESS STAKEHOLDER OPPORTUNITIES', weight: 3,
+                          fields: [
+                            { id:'tld_db', label:'Opted-In Business Database Size', priority:2, options:[
+                                {t:'1000+',s:10},{t:'750 - 999',s:9},{t:'500 - 749',s:8},{t:'250 - 499',s:7},
+                                {t:'200 - 249',s:6},{t:'150 - 199',s:5},{t:'100 - 149',s:4},
+                                {t:'50 - 99',s:3},{t:'0 - 49',s:2},{t:'Unknown',s:1}]},
+                            { id:'tld_networking', label:'Networking & Stakeholder Introductions', priority:4, options:[
+                                {t:'PIF co-hosts and co-curates a networking / side event',s:10},
+                                {t:'Multiple networking; proactive introductions facilitated',s:8},
+                                {t:'Open networking; full attendee list shared',s:6},
+                                {t:'Limited opportunity to network',s:3},
+                                {t:'No opportunity to network',s:1}]},
+                            { id:'tld_vip', label:'VIP Customised Experiences', priority:3, options:[
+                                {t:"World-class money-can't-buy experience",s:10},
+                                {t:'Curated experiences in line with other partners',s:5},
+                                {t:'No access to VIP experiences',s:1}]}
+                          ]},
+                        { title: 'RIGHTS HOLDER STATURE', weight: 3,
+                          fields: [
+                            { id:'tld_partners', label:'Stature of Existing Official Partners', priority:4, options:[
+                                {t:'Majority multinationals ($50BN+ turnover)',s:10},
+                                {t:'Majority global multinationals ($25BN+ turnover)',s:9},
+                                {t:'Majority regional ($10BN+ turnover)',s:8},{t:'Majority regional ($5BN+ turnover)',s:7},
+                                {t:'Majority regional ($2.5BN+ turnover)',s:6},{t:'Majority national ($1BN+ turnover)',s:5},
+                                {t:'Majority local ($500M+ turnover)',s:4},{t:'Majority local ($250M+ turnover)',s:3},
+                                {t:'Turnover under $250m',s:2},{t:'No Partners',s:1}]},
+                            { id:'tld_employees', label:'Full-Time Employees at Rights Holder', priority:2, options:[
+                                {t:'50+',s:10},{t:'40+',s:8},{t:'30+',s:6},{t:'20+',s:4},{t:'10+',s:2},{t:'< 10',s:1}]}
+                          ]}
+                    ]
+                }
+            }
+        };
+
+        let currentSponsorshipCategory = 'Sports & Entertainment';
+        let currentSponsorshipScope = 'Global';
+        let currentSponsorshipData = null;
+
+        const tooltips = {
+            firstTime: "Determine if this is PIF's first potential participation. \"Yes\" = new opportunity to enter market/relationship; \"No\" = building on previous engagement; \"Unknown\" = unclear history.",
+            geoRisk: "Assess current diplomatic and political relationship between Saudi Arabia and the host country. Consider recent bilateral meetings, trade relations, and any tensions or conflicts.",
+            mediaRisk: "Evaluate whether media coverage will be positive, neutral, or potentially hostile toward PIF participation. Consider host country media sentiment toward Saudi Arabia.",
+            culturalProtocol: "Assess cultural and religious considerations. Consider timing (Ramadan, Hajj), cultural sensitivities, dietary requirements, prayer facilities, and protocol expectations.",
+            sentimentRisk: "Evaluate potential for public backlash, protests, or negative reactions to PIF attendance. Consider activist presence and local public opinion toward Saudi Arabia.",
+            businessObjective: "Measure alignment with PIF's strategic priorities, Vision 2030 goals, sector focus areas, and current investment themes.",
+            clientCoverage: "Assess what percentage of attendees are relevant institutional investors, potential partners, or strategic counterparts that PIF wants to engage.",
+            geoEnvironment: "Consider broader regional stability, international relations context, and whether participation supports or conflicts with Saudi diplomatic objectives.",
+            historicalEngagement: "Evaluate previous PIF participation outcomes, relationship development, and whether continued engagement offers incremental value or risks over-participation.",
+            strategicTiming: "Assess timing relative to business cycles, market conditions, internal priorities, and scheduling conflicts with other strategic activities.",
+            highProfile: "Identify confirmed high-profile political and financial leaders. Focus on verified attendance, not speculation about potential participants.",
+            attendeeQuality: "Evaluate the general caliber, decision-making authority, and institutional representation of the broader attendee base beyond high-profile figures.",
+            networking: "Assess quality of networking facilitation, including structured meetings, private dinners, roundtables, and opportunities for meaningful one-on-one interactions.",
+            exclusivity: "Determine selectivity level, attendee vetting process, registration restrictions, and overall exclusiveness of participation.",
+            speaking: "Evaluate potential for keynote speeches, panel participation, moderating roles, or other thought leadership platforms for PIF executives.",
+            brandPositioning: "Assess quality of brand association, media coverage tier (global/regional/local), and how participation enhances PIF's industry positioning.",
+            digitalReach: "Evaluate live streaming capabilities, social media strategy, recorded content creation, and potential for extending reach beyond physical attendees.",
+            culturalAlignment: "Consider how participation fits with Saudi cultural values, regional diplomatic objectives, and PIF's desired cultural positioning.",
+            producerTrack: "Assess event organizer's credibility, experience, historical execution quality, industry reputation, and track record of successful events.",
+            logistics: "Evaluate venue prestige, logistical convenience, location execution standards, security arrangements, and operational competence.",
+            overallRisk: "Comprehensive risk assessment considering security, reputational, operational, and strategic risks, factoring in available mitigation strategies.",
+            awardHeritage: "Evaluate the award's history, longevity, and established recognition in the industry. Consider how long it has existed and its evolution over time.",
+            industryStanding: "Assess the award's reputation and standing within the relevant industry or sector. Consider its perceived authority and influence.",
+            pastWinnerQuality: "Examine the caliber and reputation of previous award recipients. Look at their achievements and organizational standing.",
+            organizerCredibility: "Evaluate the track record, reputation, and credibility of the organization or body that administers the award.",
+            judgeIndependence: "Assess the independence and expertise of the judging panel. Consider potential conflicts of interest and qualifications of judges.",
+            selectionTransparency: "Evaluate how transparent and well-documented the selection process is. Look for published criteria and clear methodology.",
+            evaluationRigor: "Assess the thoroughness and rigor of the evaluation process. Consider how comprehensively applications are reviewed.",
+            governanceStandards: "Evaluate the governance framework, oversight mechanisms, and ethical standards of the award program.",
+            submissionEffort: "Estimate the time and effort required to prepare and submit the application. Consider complexity of requirements.",
+            dataRequirements: "Assess the scope and availability of data and evidence required for the application. Consider if information is readily available.",
+            internalResources: "Evaluate internal team availability and bandwidth to dedicate to application preparation and submission.",
+            costBenefit: "Analyze the return on investment considering entry fees, preparation costs, and potential benefits of winning or being shortlisted.",
+            categoryFit: "Assess how well PIF's achievements and profile match the specific award category criteria and focus area.",
+            competitivePosition: "Evaluate PIF's competitive positioning relative to other likely applicants. Consider realistic chances of winning.",
+            evidenceStrength: "Assess the quality and strength of supporting evidence and data available to build a compelling case.",
+            strategicAlignment: "Evaluate alignment between the award's focus and PIF's strategic priorities, Vision 2030 goals, and key initiatives.",
+            brandEnhancement: "Assess the potential impact on PIF's brand reputation, positioning, and perception among key stakeholders.",
+            peerRecognition: "Evaluate the value of recognition from industry peers, competitors, and other respected organizations.",
+            longevityImpact: "Consider the lasting impact and enduring value of winning this award over the long term.",
+            reputationalRisk: "Assess reputational risks associated with applying but not winning, or being associated with the award.",
+            mediaCoverage: "Evaluate the breadth and quality of media coverage the award receives across different channels and geographies.",
+            stakeholderImpact: "Assess how winning would impact relationships with key stakeholders including LPs, partners, regulators, and government.",
+            platformOpportunities: "Evaluate opportunities for thought leadership, networking, and platform access associated with the award.",
+            digitalAmplification: "Assess the digital and social media amplification potential of the award through various online channels."
+        };
+
+        const eventData = {
+            basicFields: [
+                { id: 'eventName', label: 'Event Name', type: 'text' },
+                { id: 'eventType', label: 'Event Type', type: 'select', options: ['Conference', 'Summit', 'Networking', 'Exhibition', 'CEO Chat', 'Roundtable'] },
+                { id: 'location', label: 'Location', type: 'text' },
+                { id: 'dates', label: 'Date(s)', type: 'text' },
+                { id: 'organizer', label: 'Organizer', type: 'text' },
+                { id: 'cost', label: 'Estimated Cost ($)', type: 'number' }
+            ],
+            prescreen: [
+                { id: 'geoRisk', label: 'Geopolitical Risk', tooltip: 'geoRisk', options: ['Excellent Relations (95)', 'Good Relations (80)', 'Neutral Relations (65)', 'Some Tensions (45)', 'High Risk (15)'] },
+                { id: 'mediaRisk', label: 'Media Coverage Risk', tooltip: 'mediaRisk', options: ['Positive Coverage Expected (95)', 'Neutral Environment (80)', 'Manageable Risks (65)', 'Significant Management Needed (45)', 'Hostile Environment (15)'] },
+                { id: 'culturalProtocol', label: 'Cultural Protocol Complexity', tooltip: 'culturalProtocol', options: ['Simple Protocols (95)', 'Standard Requirements (80)', 'Moderate Complexity (65)', 'Complex But Manageable (45)', 'Unmanageable Complexity (15)'] },
+                { id: 'sentimentRisk', label: 'Negative Sentiment Risk', tooltip: 'sentimentRisk', options: ['No Risk (95)', 'Minimal Risk (80)', 'Moderate Risk (65)', 'Significant Risk (45)', 'Unacceptable Risk (15)'] }
+            ],
+            categories: [
+                {
+                    title: 'STRATEGIC ALIGNMENT (32%)', weight: 0.32,
+                    fields: [
+                        { id: 'businessObjective', label: 'Business Objective Alignment', tooltip: 'businessObjective', options: ['Perfect Strategic Fit (95)', 'Strong Alignment (80)', 'Moderate Alignment (65)', 'Limited Alignment (45)', 'Poor Alignment (15)'] },
+                        { id: 'clientCoverage', label: 'Client Coverage Match', tooltip: 'clientCoverage', options: ['80%+ Target Attendees (95)', '60-79% Target Attendees (80)', '40-59% Target Attendees (65)', '20-39% Target Attendees (45)', 'Under 20% Target Attendees (15)'] },
+                        { id: 'geoEnvironment', label: 'Geopolitical Environment', tooltip: 'geoEnvironment', options: ['Highly Favorable (95)', 'Positive Environment (80)', 'Neutral Environment (65)', 'Some Challenges (45)', 'Challenging Environment (15)'] },
+                        { id: 'historicalEngagement', label: 'Historical Engagement', tooltip: 'historicalEngagement', options: ['Strategic Market Entry (95)', 'Building on Success (80)', 'Standard Repeat (65)', 'Diminishing Returns (45)', 'Over-Participation Risk (15)'] },
+                        { id: 'strategicTiming', label: 'Strategic Timing', tooltip: 'strategicTiming', options: ['Optimal Timing (95)', 'Good Timing (80)', 'Acceptable Timing (65)', 'Suboptimal Timing (45)', 'Poor Timing (15)'] }
+                    ]
+                },
+                {
+                    title: 'RELATIONSHIP BUILDING (35%)', weight: 0.35,
+                    fields: [
+                        { id: 'highProfile', label: 'High-Profile Figure Access', tooltip: 'highProfile', options: ['Tier 1 Global Leaders (95)', 'Tier 2 Regional Leaders (80)', 'Tier 3 Industry Leaders (65)', 'Tier 4 Specialists (45)', 'Standard Participants (15)'] },
+                        { id: 'attendeeQuality', label: 'Attendee Quality', tooltip: 'attendeeQuality', options: ['90%+ C-Suite Decision Makers (95)', '70-89% Senior Management (80)', '50-69% Mid-Senior Level (65)', '30-49% Mixed Levels (45)', 'Junior or Unknown Quality (15)'] },
+                        { id: 'networking', label: 'Networking Infrastructure', tooltip: 'networking', options: ['Structured One-on-One Facilitation (95)', 'Dedicated Networking Sessions (80)', 'Standard Networking Time (65)', 'Limited Networking (45)', 'Poor Networking Opportunities (15)'] },
+                        { id: 'exclusivity', label: 'Event Exclusivity', tooltip: 'exclusivity', options: ['Invitation-Only Under 50 (95)', 'Limited 50-100 Selected (80)', 'Moderate Selectivity 100-200 (65)', 'Basic Qualifications 200+ (45)', 'Open Access No Restrictions (15)'] }
+                    ]
+                },
+                {
+                    title: 'THOUGHT LEADERSHIP (18%)', weight: 0.18,
+                    fields: [
+                        { id: 'speaking', label: 'Speaking Opportunities', tooltip: 'speaking', options: ['Keynote or Panel Moderation (95)', 'Panel Participation (80)', 'Audience Participation (65)', 'Limited Visibility (45)', 'No Speaking Opportunities (15)'] },
+                        { id: 'brandPositioning', label: 'Brand Positioning', tooltip: 'brandPositioning', options: ['Tier 1 Global Premium Association (95)', 'Tier 2 Strong Brand Value (80)', 'Standard Industry Positioning (65)', 'Limited Brand Benefit (45)', 'No Brand Value (15)'] },
+                        { id: 'digitalReach', label: 'Digital Reach', tooltip: 'digitalReach', options: ['Live Stream + Global Social (95)', 'Recorded + Regional Digital (80)', 'Basic Digital Coverage (65)', 'Limited Digital Presence (45)', 'No Digital Amplification (15)'] },
+                        { id: 'culturalAlignment', label: 'Cultural Brand Alignment', tooltip: 'culturalAlignment', options: ['Excellent Cultural Fit (95)', 'Good Regional Alignment (80)', 'Standard Professional Setting (65)', 'Some Cultural Considerations (45)', 'Cultural Misalignment (15)'] }
+                    ]
+                },
+                {
+                    title: 'EXECUTION QUALITY (10%)', weight: 0.10,
+                    fields: [
+                        { id: 'producerTrack', label: 'Producer Track Record', tooltip: 'producerTrack', options: ['Top-Tier 10+ Year Producer (95)', 'Established 5+ Year Producer (80)', 'Competent Producer (65)', 'Limited Track Record (45)', 'Unknown or Poor Producer (15)'] },
+                        { id: 'logistics', label: 'Logistics & Venue', tooltip: 'logistics', options: ['Premium Venue Five-Star (95)', 'Quality Venue Professional (80)', 'Standard Venue Adequate (65)', 'Below-Average Venue (45)', 'Poor Venue or Logistics (15)'] }
+                    ]
+                },
+                {
+                    title: 'RISK ASSESSMENT (5%)', weight: 0.05,
+                    fields: [
+                        { id: 'overallRisk', label: 'Overall Risk Score', tooltip: 'overallRisk', options: ['Minimal Risk Strong Mitigation (95)', 'Low Risk Standard Mitigation (80)', 'Moderate Risk Enhanced Mitigation (65)', 'High Risk Extensive Mitigation (45)', 'Unacceptable Risk Level (15)'] }
+                    ]
+                }
+            ],
+            prestige: {
+                label: 'Event Prestige Tier',
+                options: [
+                    { text: 'Tier 1 (Davos, Greenwich, IFSWF)', value: 1.3 },
+                    { text: 'Tier 2 (Major AIMA, Exclusive SWF)', value: 1.2 },
+                    { text: 'Tier 3 (Regional Prestige)', value: 1.1 },
+                    { text: 'None (Standard Events)', value: 1.0 }
+                ]
+            }
+        };
+
+        const awardData = {
+            basicFields: [
+                { id: 'awardName', label: 'Award Name', type: 'searchable-select', required: true, options: allAwardNames },
+                { id: 'awardCategory', label: 'Award Category', type: 'text', required: false, readonly: true },
+                { id: 'applicationType', label: 'Application Type', type: 'text', required: false, readonly: true },
+                { id: 'awardOrg', label: 'Award Organization', type: 'text', required: false, readonly: true },
+                { id: 'officialWebsite', label: 'Official Website', type: 'url', required: false, readonly: true },
+                { id: 'deadline', label: 'Application Deadline', type: 'date' },
+                { id: 'entryFee', label: 'Entry Fee ($)', type: 'number' }
+            ],
+            prescreen: [],
+            categories: [
+                {
+                    title: 'HISTORICAL BACKGROUND & CREDIBILITY (25%)', weight: 0.25,
+                    fields: [
+                        { id: 'awardHeritage', label: 'Award Heritage & Recognition', tooltip: 'awardHeritage', options: ['Iconic Global Recognition 50+ Years', 'Highly Established 20-50 Years', 'Well-Regarded 10-20 Years', 'Emerging Recognition 5-10 Years', 'New Award Under 5 Years'] },
+                        { id: 'industryStanding', label: 'Industry Standing', tooltip: 'industryStanding', options: ['Premier Global Standard', 'Leading Regional Authority', 'Respected Industry Body', 'Growing Recognition', 'Limited Standing'] },
+                        { id: 'pastWinnerQuality', label: 'Past Winner Caliber', tooltip: 'pastWinnerQuality', options: ['Elite Global Peers Only', 'Top-Tier Organizations', 'Strong Industry Leaders', 'Mixed Quality Winners', 'Unknown/Questionable Winners'] },
+                        { id: 'organizerCredibility', label: 'Organizer Credibility', tooltip: 'organizerCredibility', options: ['Premier International Body', 'Established Industry Association', 'Credible Professional Organization', 'Limited Track Record', 'Unknown Organizer'] }
+                    ]
+                },
+                {
+                    title: 'SELECTION PROCESS & GOVERNANCE (20%)', weight: 0.20,
+                    fields: [
+                        { id: 'judgeIndependence', label: 'Judge Independence & Expertise', tooltip: 'judgeIndependence', options: ['Fully Independent Expert Panel', 'Independent with Clear Criteria', 'Standard Industry Panel', 'Somewhat Opaque Process', 'Questionable Independence'] },
+                        { id: 'selectionTransparency', label: 'Selection Transparency', tooltip: 'selectionTransparency', options: ['Fully Published Methodology', 'Clear Public Criteria', 'Standard Process Disclosed', 'Limited Transparency', 'Opaque Process'] },
+                        { id: 'evaluationRigor', label: 'Evaluation Rigor', tooltip: 'evaluationRigor', options: ['Comprehensive Multi-Stage Review', 'Thorough Documented Process', 'Standard Assessment', 'Basic Evaluation', 'Minimal Rigor'] },
+                        { id: 'governanceStandards', label: 'Governance Standards', tooltip: 'governanceStandards', options: ['Exemplary Governance Framework', 'Strong Standards & Oversight', 'Adequate Governance', 'Basic Governance', 'Weak Governance'] }
+                    ]
+                },
+                {
+                    title: 'ADMINISTRATIVE REQUIREMENTS (15%)', weight: 0.15,
+                    fields: [
+                        { id: 'submissionEffort', label: 'Submission Effort & Complexity', tooltip: 'submissionEffort', options: ['Minimal - Under 5 Hours', 'Moderate - 5 to 15 Hours', 'Significant - 15 to 30 Hours', 'High - 30 to 50 Hours', 'Excessive - Over 50 Hours'] },
+                        { id: 'dataRequirements', label: 'Data & Evidence Requirements', tooltip: 'dataRequirements', options: ['Readily Available Data', 'Standard Documentation', 'Some New Analysis Required', 'Extensive Data Preparation', 'Prohibitive Requirements'] },
+                        { id: 'internalResources', label: 'Internal Resource Availability', tooltip: 'internalResources', options: ['Full Bandwidth Available', 'Adequate Resources', 'Moderate Constraints', 'Limited Resources', 'Insufficient Bandwidth'] },
+                        { id: 'costBenefit', label: 'Cost-Benefit Analysis', tooltip: 'costBenefit', options: ['Excellent ROI - Minimal Cost', 'Good ROI - Reasonable Cost', 'Acceptable ROI', 'Questionable ROI', 'Poor ROI - High Cost'] }
+                    ]
+                },
+                {
+                    title: 'SCOPE & SPECIFICITY (15%)', weight: 0.15,
+                    fields: [
+                        { id: 'categoryFit', label: 'Category Alignment', tooltip: 'categoryFit', options: ['Perfect Match - Custom Fit', 'Strong Alignment', 'Good Fit', 'Broad Category', 'Poor Fit'] },
+                        { id: 'competitivePosition', label: 'Competitive Positioning', tooltip: 'competitivePosition', options: ['Clear Competitive Advantage', 'Strong Positioning', 'Competitive Field', 'Highly Competitive', 'Low Win Probability'] },
+                        { id: 'evidenceStrength', label: 'Evidence & Case Strength', tooltip: 'evidenceStrength', options: ['Exceptional Supporting Evidence', 'Strong Case & Data', 'Adequate Evidence', 'Weak Supporting Data', 'Insufficient Evidence'] },
+                        { id: 'strategicAlignment', label: 'Strategic Alignment', tooltip: 'strategicAlignment', options: ['Perfect Strategic Fit', 'Strong Alignment', 'Moderate Alignment', 'Limited Alignment', 'Misalignment'] }
+                    ]
+                },
+                {
+                    title: 'BRAND LEGACY & TRACK RECORD (15%)', weight: 0.15,
+                    fields: [
+                        { id: 'brandEnhancement', label: 'Brand Enhancement Potential', tooltip: 'brandEnhancement', options: ['Exceptional Brand Elevation', 'Significant Enhancement', 'Moderate Benefit', 'Limited Impact', 'Minimal Value'] },
+                        { id: 'peerRecognition', label: 'Peer Recognition Value', tooltip: 'peerRecognition', options: ['Elite Peer Validation', 'Strong Industry Recognition', 'Standard Peer Acknowledgment', 'Limited Recognition', 'Minimal Peer Value'] },
+                        { id: 'longevityImpact', label: 'Long-Term Legacy Impact', tooltip: 'longevityImpact', options: ['Enduring Prestige - Decades', 'Long-Term Value - Years', 'Medium-Term Recognition', 'Short-Term Benefit', 'Minimal Lasting Impact'] },
+                        { id: 'reputationalRisk', label: 'Reputational Risk Assessment', tooltip: 'reputationalRisk', options: ['No Risk - Win or Lose', 'Minimal Risk', 'Manageable Risk', 'Moderate Risk', 'High Reputational Risk'] }
+                    ]
+                },
+                {
+                    title: 'EXPOSURE & VISIBILITY (10%)', weight: 0.10,
+                    fields: [
+                        { id: 'mediaCoverage', label: 'Media Coverage & Reach', tooltip: 'mediaCoverage', options: ['Global Tier 1 Media', 'Major Regional Coverage', 'Industry Publications', 'Limited Coverage', 'Minimal Visibility'] },
+                        { id: 'stakeholderImpact', label: 'Stakeholder Impact', tooltip: 'stakeholderImpact', options: ['Critical to Key Stakeholders', 'High Stakeholder Value', 'Moderate Impact', 'Limited Interest', 'Low Stakeholder Relevance'] },
+                        { id: 'platformOpportunities', label: 'Platform & Networking', tooltip: 'platformOpportunities', options: ['Major Global Platform', 'Significant Platform Access', 'Standard Recognition Event', 'Limited Opportunities', 'No Additional Platform'] },
+                        { id: 'digitalAmplification', label: 'Digital Amplification', tooltip: 'digitalAmplification', options: ['Extensive Digital Campaign', 'Strong Digital Presence', 'Standard Digital Coverage', 'Limited Digital Reach', 'No Digital Amplification'] }
+                    ]
+                }
+            ],
+            prestige: {
+                label: 'Award Prestige Tier',
+                options: [
+                    { text: 'Tier 1 - Global Premier (Nobel, Pulitzer equivalent)', value: 1.3 },
+                    { text: 'Tier 2 - International Leader (Major sector awards)', value: 1.2 },
+                    { text: 'Tier 3 - Regional Excellence', value: 1.1 },
+                    { text: 'Tier 4 - Standard Recognition', value: 1.0 }
+                ]
+            }
+        };
+
+        let currentType = 'event';
+        let currentData = eventData;
+
+        function createSearchableSelect(id, options, onSelect) {
+            const container = document.createElement('div');
+            container.className = 'searchable-select';
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'search-input';
+            input.id = id;
+            input.placeholder = 'Type to search...';
+            input.autocomplete = 'off';
+            
+            const dropdown = document.createElement('div');
+            dropdown.className = 'dropdown-options';
+            dropdown.id = id + '-dropdown';
+            
+            function filterOptions(searchTerm) {
+                dropdown.innerHTML = '';
+                const filtered = options.filter(opt => 
+                    opt.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                
+                filtered.forEach(option => {
+                    const optDiv = document.createElement('div');
+                    optDiv.className = 'dropdown-option';
+                    optDiv.textContent = option;
+                    optDiv.onclick = () => {
+                        input.value = option;
+                        input.dataset.value = option;
+                        dropdown.classList.remove('show');
+                        if (onSelect) onSelect(option);
+                    };
+                    dropdown.appendChild(optDiv);
+                });
+                
+                if (filtered.length > 0) {
+                    dropdown.classList.add('show');
+                } else {
+                    dropdown.classList.remove('show');
+                }
+            }
+            
+            input.addEventListener('input', (e) => {
+                filterOptions(e.target.value);
+            });
+            
+            input.addEventListener('focus', () => {
+                filterOptions(input.value);
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!container.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            
+            container.appendChild(input);
+            container.appendChild(dropdown);
+            
+            return container;
+        }
+
+        function extractScore(optionText) {
+            const match = optionText.match(/\((\d+)\)/);
+            return match ? parseInt(match[1]) : 0;
+        }
+
+        function handleAwardNameSelection(awardName) {
+            const categoryField = document.getElementById('awardCategory');
+            const typeField = document.getElementById('applicationType');
+            const orgField = document.getElementById('awardOrg');
+            const websiteField = document.getElementById('officialWebsite');
+            
+            if (awardName === 'Other') {
+                // Enable manual entry for all fields
+                if (categoryField) {
+                    categoryField.readOnly = false;
+                    categoryField.value = '';
+                    categoryField.style.background = '#ffffff';
+                }
+                if (typeField) {
+                    typeField.readOnly = false;
+                    typeField.value = '';
+                    typeField.style.background = '#ffffff';
+                }
+                if (orgField) {
+                    orgField.readOnly = false;
+                    orgField.value = '';
+                    orgField.style.background = '#ffffff';
+                }
+                if (websiteField) {
+                    websiteField.readOnly = false;
+                    websiteField.value = '';
+                    websiteField.style.background = '#ffffff';
+                }
+                isAutoApproved = false;
+                document.getElementById('categorySections').classList.remove('hidden');
+            } else if (awardDatabase[awardName]) {
+                // Auto-fill from database
+                const awardInfo = awardDatabase[awardName];
+                
+                if (categoryField) {
+                    categoryField.value = awardInfo.category || '';
+                    categoryField.readOnly = true;
+                    categoryField.style.background = '#f3f4f6';
+                }
+                if (typeField) {
+                    typeField.value = awardInfo.type || '';
+                    typeField.readOnly = true;
+                    typeField.style.background = '#f3f4f6';
+                }
+                if (orgField) {
+                    orgField.value = awardInfo.org;
+                    orgField.readOnly = true;
+                    orgField.style.background = '#f3f4f6';
+                }
+                if (websiteField) {
+                    websiteField.value = awardInfo.website;
+                    websiteField.readOnly = true;
+                    websiteField.style.background = '#f3f4f6';
+                }
+                
+                // Check if strategic award
+                if (strategicAwards[awardName]) {
+                    showAutoApproval(awardName);
+                } else {
+                    isAutoApproved = false;
+                    document.getElementById('categorySections').classList.remove('hidden');
+                }
+            }
+        }
+
+        function showAutoApproval(awardName) {
+            isAutoApproved = true;
+            const award = strategicAwards[awardName];
+            
+            // Hide all category sections
+            document.getElementById('categorySections').classList.add('hidden');
+            
+            // Show results
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('finalScore').textContent = '100.0';
+            
+            const recEl = document.getElementById('recommendation');
+            recEl.textContent = '✓ PRE-APPROVED - Strategic Alignment with PIF';
+            recEl.className = 'recommendation apply';
+            
+            // Show approval reason
+            const reasonEl = document.getElementById('approvalReason');
+            const reasonText = document.getElementById('approvalReasonText');
+            reasonEl.classList.remove('hidden');
+            reasonText.textContent = `This award is strategically aligned with PIF's priorities: ${award.reason}`;
+            
+            // Hide detailed breakdown
+            document.getElementById('expandToggle').classList.add('hidden');
+            document.getElementById('detailsSection').classList.remove('show');
+        }
+
+        function initializeForm() {
+            document.getElementById('basicInfo').innerHTML = '';
+            document.getElementById('prescreenFields').innerHTML = '';
+            document.getElementById('category1Fields').innerHTML = '';
+            document.getElementById('category2Fields').innerHTML = '';
+            document.getElementById('category3Fields').innerHTML = '';
+            document.getElementById('category4Fields').innerHTML = '';
+            document.getElementById('category5Fields').innerHTML = '';
+            document.getElementById('category6Fields').innerHTML = '';
+            document.getElementById('prestigeTier').innerHTML = '';
+            document.getElementById('resultsSection').classList.remove('show');
+
+            // Show prestige section for event/award
+            const prestigeSection = document.getElementById('prestigeSection');
+            if (prestigeSection) prestigeSection.classList.remove('hidden');
+
+            currentData.basicFields.forEach(field => {
+                const div = document.createElement('div');
+                div.className = 'form-field';
+                
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                div.appendChild(label);
+                
+                if (field.type === 'searchable-select') {
+                    const searchSelect = createSearchableSelect(
+                        field.id, 
+                        field.options,
+                        (value) => {
+                            if (field.id === 'awardName') {
+                                handleAwardNameSelection(value);
+                            }
+                            if (field.id === 'awardCategory' || field.id === 'awardName') {
+                                calculateFinalScore();
+                            }
+                        }
+                    );
+                    div.appendChild(searchSelect);
+                } else if (field.type === 'select') {
+                    const select = document.createElement('select');
+                    select.id = field.id;
+                    if (field.required) select.required = true;
+                    
+                    const defaultOpt = document.createElement('option');
+                    defaultOpt.value = '';
+                    defaultOpt.textContent = 'Select...';
+                    select.appendChild(defaultOpt);
+                    
+                    field.options.forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt;
+                        option.textContent = opt;
+                        select.appendChild(option);
+                    });
+                    
+                    select.addEventListener('change', () => {
+                        if (field.id === 'applicationType' || field.id === 'awardType' || field.id === 'eventType') {
+                            calculateFinalScore();
+                        }
+                    });
+                    
+                    div.appendChild(select);
+                } else {
+                    const input = document.createElement('input');
+                    input.type = field.type;
+                    input.id = field.id;
+                    if (field.required) input.required = true;
+                    if (field.readonly) input.readOnly = true;
+                    
+                    if (field.id === 'eventName' || field.id === 'awardName') {
+                        input.addEventListener('input', calculateFinalScore);
+                        input.addEventListener('change', calculateFinalScore);
+                    }
+                    
+                    div.appendChild(input);
+                }
+                
+                document.getElementById('basicInfo').appendChild(div);
+            });
+
+            document.getElementById('prescreenTitle').textContent = currentType === 'event' ? 'PRE-SCREENING CRITERIA' : 'INITIAL ASSESSMENT';
+
+            // Hide prescreen section for awards since they don't have prescreen
+            if (currentType === 'award') {
+                document.getElementById('prescreenSection').classList.add('hidden');
+            } else {
+                document.getElementById('prescreenSection').classList.remove('hidden');
+            }
+
+            currentData.prescreen.forEach(field => {
+                const div = document.createElement('div');
+                div.className = 'form-field';
+                const optionsHTML = '<option value="">Select...</option>' + field.options.map(opt => {
+                    const score = extractScore(opt);
+                    const text = opt.replace(/\s*\(\d+\)/, ''); // Remove (95) etc from display
+                    return `<option value="${score}">${text}</option>`;
+                }).join('');
+                const tooltipHTML = field.tooltip ? `<span class="tooltip-icon" data-tooltip="${tooltips[field.tooltip]}">?</span>` : '';
+                div.innerHTML = `<label>${field.label}${tooltipHTML}</label><select id="${field.id}" class="prescreen-field" required>${optionsHTML}</select>`;
+                document.getElementById('prescreenFields').appendChild(div);
+            });
+
+            currentData.categories.forEach((category, idx) => {
+                const categoryNum = idx + 1;
+                if (document.getElementById(`category${categoryNum}Title`)) {
+                    document.getElementById(`category${categoryNum}Title`).textContent = category.title;
+                }
+                category.fields.forEach(field => {
+                    const div = document.createElement('div');
+                    div.className = 'form-field';
+                    const optionsHTML = '<option value="">Select...</option>' + field.options.map(opt => {
+                        const score = extractScore(opt);
+                        const text = opt.replace(/\s*\(\d+\)/, ''); // Remove (95) etc from display
+                        return `<option value="${score}">${text}</option>`;
+                    }).join('');
+                    const tooltipHTML = field.tooltip ? `<span class="tooltip-icon" data-tooltip="${tooltips[field.tooltip]}">?</span>` : '';
+                    div.innerHTML = `<label>${field.label}${tooltipHTML}</label><select id="${field.id}" class="category${categoryNum}-field" required>${optionsHTML}</select>`;
+                    const container = document.getElementById(`category${categoryNum}Fields`);
+                    if (container) {
+                        container.appendChild(div);
+                    }
+                });
+            });
+
+            // Show/hide category 5 and 6 sections based on type
+            if (currentType === 'award') {
+                // Awards have 6 categories, show category 5 section (which we'll use for category 5)
+                document.getElementById('category5Section').classList.remove('hidden');
+                // We need a category 6 section - let's check if it exists
+                const cat6 = document.getElementById('category6Section');
+                if (cat6) {
+                    cat6.classList.remove('hidden');
+                }
+            } else {
+                // Events have 5 categories
+                document.getElementById('category5Section').classList.remove('hidden');
+                const cat6 = document.getElementById('category6Section');
+                if (cat6) {
+                    cat6.classList.add('hidden');
+                }
+            }
+
+            document.getElementById('prestigeLabel').textContent = currentData.prestige.label;
+            const prestigeHTML = '<option value="">Select...</option>' + currentData.prestige.options.map(opt => {
+                // Keep the full text for prestige since it's more descriptive
+                return `<option value="${opt.value}">${opt.text}</option>`;
+            }).join('');
+            document.getElementById('prestigeTier').innerHTML = prestigeHTML;
+
+            addEventListeners();
+        }
+
+        function addEventListeners() {
+            document.querySelectorAll('.prescreen-field').forEach(field => {
+                field.addEventListener('change', () => {
+                    checkPrescreen();
+                    calculateFinalScore();
+                });
+            });
+            for (let i = 1; i <= 6; i++) {
+                document.querySelectorAll(`.category${i}-field`).forEach(field => {
+                    field.addEventListener('change', () => {
+                        calculateCategory(i);
+                        calculateFinalScore();
+                    });
+                });
+            }
+            document.getElementById('prestigeTier').addEventListener('change', calculateFinalScore);
+            
+            // Add listeners to name and type fields
+            const nameField = currentType === 'event' ? 'eventName' : 'awardName';
+            const nameInput = document.getElementById(nameField);
+            if (nameInput) {
+                nameInput.addEventListener('input', calculateFinalScore);
+                nameInput.addEventListener('change', calculateFinalScore);
+            }
+            
+            if (currentType === 'event') {
+                const typeField = document.getElementById('eventType');
+                if (typeField) {
+                    typeField.addEventListener('change', calculateFinalScore);
+                }
+            } else {
+                const typeField = document.getElementById('awardType');
+                if (typeField) {
+                    typeField.addEventListener('change', calculateFinalScore);
+                }
+            }
+        }
+
+        function checkPrescreen() {
+            const fields = document.querySelectorAll('.prescreen-field');
+            let allFilled = true, anyLow = false;
+            fields.forEach(field => {
+                if (!field.value) allFilled = false;
+                else if (parseInt(field.value) < 30) anyLow = true;
+            });
+            const alert = document.getElementById('prescreenAlert');
+            if (allFilled) {
+                alert.classList.remove('hidden');
+                if (anyLow) {
+                    alert.textContent = '⚠ AUTO-DECLINE - Failed Pre-Screen';
+                    alert.classList.remove('pass');
+                } else {
+                    alert.textContent = '✓ PROCEED - All criteria passed';
+                    alert.classList.add('pass');
+                }
+            } else {
+                alert.classList.add('hidden');
+            }
+        }
+
+        function calculateCategory(categoryNum) {
+            const fields = document.querySelectorAll(`.category${categoryNum}-field`);
+            let sum = 0, count = 0;
+            fields.forEach(field => {
+                if (field.value) { sum += parseInt(field.value); count++; }
+            });
+            const avg = count > 0 ? (sum / count) : 0;
+            document.getElementById(`category${categoryNum}Avg`).textContent = avg.toFixed(1);
+        }
+
+        function calculateFinalScore() {
+            // Check if all mandatory fields are filled
+            const allMandatoryFilled = checkAllMandatoryFields();
+            
+            if (!allMandatoryFilled) {
+                document.getElementById('resultsSection').classList.remove('show');
+                return;
+            }
+            
+            // If auto-approved, results are already shown by showAutoApproval
+            if (isAutoApproved) {
+                return;
+            }
+            
+            // Show normal results section
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('approvalReason').classList.add('hidden');
+            document.getElementById('expandToggle').classList.remove('hidden');
+            
+            let totalWeighted = 0, scoresByCategory = [];
+            currentData.categories.forEach((category, idx) => {
+                const categoryNum = idx + 1;
+                const avgText = document.getElementById(`category${categoryNum}Avg`).textContent;
+                const avg = parseFloat(avgText) || 0;
+                const weighted = avg * category.weight;
+                totalWeighted += weighted;
+                scoresByCategory.push({ title: category.title, value: weighted.toFixed(1) });
+            });
+
+            const multiplier = parseFloat(document.getElementById('prestigeTier').value) || 1.0;
+            const finalScore = Math.min(totalWeighted * multiplier, 100);
+
+            document.getElementById('finalScore').textContent = finalScore.toFixed(1);
+
+            const categoryDisplay = document.getElementById('categoryScoresDisplay');
+            categoryDisplay.innerHTML = scoresByCategory.map(cat => `<div class="category-score"><h4>${cat.title.split('(')[0]}</h4><div class="value">${cat.value}</div></div>`).join('');
+
+            const recEl = document.getElementById('recommendation');
+            const prescreenPassed = !document.getElementById('prescreenAlert').textContent.includes('AUTO-DECLINE');
+            
+            if (!prescreenPassed && document.getElementById('prescreenAlert').textContent) {
+                recEl.textContent = '✗ AUTO-DECLINE - Failed Credibility Check';
+                recEl.className = 'recommendation decline';
+            } else if (finalScore >= 80) {
+                recEl.textContent = currentType === 'event' ? '✓ ATTEND - High Priority' : '✓ APPLY - High Priority';
+                recEl.className = 'recommendation apply';
+            } else if (finalScore >= 60) {
+                recEl.textContent = currentType === 'event' ? '→ CONDITIONAL - Consider' : '→ CONSIDER - Strong Case';
+                recEl.className = 'recommendation consider';
+            } else if (finalScore >= 40) {
+                recEl.textContent = '? EVALUATE - Review Further';
+                recEl.className = 'recommendation consider';
+            } else {
+                recEl.textContent = '✗ DECLINE - Not Recommended';
+                recEl.className = 'recommendation decline';
+            }
+        }
+        
+        function checkAllMandatoryFields() {
+            // If auto-approved, skip validation
+            if (isAutoApproved) {
+                return true;
+            }
+            
+            // Check event/award name
+            const nameField = currentType === 'event' ? 'eventName' : 'awardName';
+            const nameInput = document.getElementById(nameField);
+            if (!nameInput || !nameInput.value) {
+                // For searchable select, check dataset.value
+                if (nameInput && nameInput.dataset && !nameInput.dataset.value) {
+                    return false;
+                }
+                if (!nameInput) return false;
+            }
+            
+            // Check event type
+            if (currentType === 'event') {
+                const typeField = document.getElementById('eventType');
+                if (!typeField || !typeField.value) return false;
+            }
+            // For awards, category and type are auto-filled so no need to check
+            
+            // Check all prescreen fields
+            const prescreenFields = document.querySelectorAll('.prescreen-field');
+            for (let field of prescreenFields) {
+                if (!field.value) return false;
+            }
+            
+            // Check all category fields
+            const maxCategories = currentType === 'award' ? 6 : 5;
+            for (let i = 1; i <= maxCategories; i++) {
+                const fields = document.querySelectorAll(`.category${i}-field`);
+                for (let field of fields) {
+                    if (!field.value) return false;
+                }
+            }
+            
+            // Check prestige tier
+            if (!document.getElementById('prestigeTier').value) return false;
+            
+            return true;
+        }
+        
+        function downloadResults() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 1100;
+
+            ctx.fillStyle = '#FAF9F7';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#106855';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+            ctx.fillStyle = '#106855';
+            ctx.fillRect(10, 10, canvas.width - 20, 80);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 26px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('PIF - PARTNERSHIP & ENGAGEMENT VALIDATOR', canvas.width / 2, 58);
+
+            let appName = '';
+            let appType = '';
+            if (currentType === 'event') {
+                appName = (document.getElementById('eventName') || {}).value || '';
+                appType = 'Event Attendance';
+            } else if (currentType === 'award') {
+                appName = (document.getElementById('awardName') || {}).value || '';
+                appType = 'Award Application';
+            } else {
+                appName = (document.getElementById('spPropertyName') || {}).value || '';
+                appType = `Sponsorship - ${currentSponsorshipCategory} (${currentSponsorshipScope})`;
+            }
+
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText(`${appType}: ${appName}`, canvas.width / 2, 125);
+
+            const finalScore = document.getElementById('finalScore').textContent;
+            ctx.font = 'bold 22px Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText('FINAL SCORE', canvas.width / 2, 175);
+            ctx.font = 'bold 72px Arial, sans-serif';
+            ctx.fillStyle = '#106855';
+            ctx.fillText(finalScore, canvas.width / 2, 255);
+
+            const recommendation = document.getElementById('recommendation').textContent;
+            const recClass = document.getElementById('recommendation').className;
+            ctx.font = 'bold 20px Arial, sans-serif';
+            if (recClass.includes('apply')) ctx.fillStyle = '#106855';
+            else if (recClass.includes('consider')) ctx.fillStyle = '#eab308';
+            else ctx.fillStyle = '#dc2626';
+            ctx.fillText(recommendation, canvas.width / 2, 295);
+
+            ctx.font = 'bold 20px Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.textAlign = 'left';
+            ctx.fillText('CATEGORY BREAKDOWN', 40, 350);
+
+            let yPos = 385;
+            const catCards = document.querySelectorAll('.category-score');
+            catCards.forEach(card => {
+                const title = card.querySelector('h4') ? card.querySelector('h4').textContent : '';
+                const value = card.querySelector('.value') ? card.querySelector('.value').textContent : '';
+                ctx.font = '16px Arial, sans-serif';
+                ctx.fillStyle = '#1a1a1a';
+                ctx.fillText(title.trim(), 60, yPos);
+                ctx.font = 'bold 20px Arial, sans-serif';
+                ctx.fillStyle = '#106855';
+                ctx.textAlign = 'right';
+                ctx.fillText(value, canvas.width - 60, yPos);
+                ctx.textAlign = 'left';
+                yPos += 42;
+            });
+
+            yPos += 30;
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            ctx.font = '13px Arial, sans-serif';
+            ctx.fillStyle = '#999';
+            ctx.textAlign = 'center';
+            ctx.fillText('Generated on ' + date + ' | PIF Partnership & Engagement Validator', canvas.width / 2, yPos);
+
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'PIF_Evaluation_' + appName.replace(/[^a-z0-9]/gi, '_') + '.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        function toggleDetails() {
+            const detailsSection = document.getElementById('detailsSection');
+            const toggle = document.getElementById('expandToggle');
+            const categoryAvgs = document.querySelectorAll('.category-avg');
+            
+            if (detailsSection.classList.contains('show')) {
+                detailsSection.classList.remove('show');
+                categoryAvgs.forEach(avg => avg.classList.remove('show'));
+                toggle.textContent = '▼ Show Detailed Breakdown';
+            } else {
+                detailsSection.classList.add('show');
+                categoryAvgs.forEach(avg => avg.classList.add('show'));
+                toggle.textContent = '▲ Hide Detailed Breakdown';
+            }
+        }
+
+        document.querySelectorAll('input[name="type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                currentType = this.value;
+                isAutoApproved = false;
+                document.getElementById('approvalReason').classList.add('hidden');
+
+                if (currentType === 'sponsorship') {
+                    document.getElementById('sponsorshipSubSelectors').classList.remove('hidden');
+                    document.getElementById('categorySections').classList.remove('hidden');
+                    updateSponsorshipData();
+                } else {
+                    document.getElementById('sponsorshipSubSelectors').classList.add('hidden');
+                    currentData = currentType === 'event' ? eventData : awardData;
+                    document.getElementById('categorySections').classList.remove('hidden');
+                    initializeForm();
+                }
+            });
+        });
+
+        function updateSponsorshipData() {
+            currentSponsorshipCategory = document.getElementById('sponsorshipCategory').value;
+            const rawScope = document.getElementById('sponsorshipScope').value;
+            currentSponsorshipScope = rawScope === 'Domestic (KSA)' ? 'Domestic' : rawScope;
+            currentSponsorshipData = sponsorshipData[currentSponsorshipCategory][currentSponsorshipScope];
+            initializeSponsorshipForm();
+        }
+
+        function initializeSponsorshipForm() {
+            // Clear all fields
+            document.getElementById('basicInfo').innerHTML = '';
+            document.getElementById('prescreenFields').innerHTML = '';
+            for (let i = 1; i <= 6; i++) {
+                const el = document.getElementById(`category${i}Fields`);
+                if (el) el.innerHTML = '';
+                const title = document.getElementById(`category${i}Title`);
+                if (title) title.textContent = '';
+            }
+            document.getElementById('resultsSection').classList.remove('show');
+            document.getElementById('prescreenSection').classList.add('hidden');
+
+            // Render basic fields
+            currentSponsorshipData.basicFields.forEach(field => {
+                const div = document.createElement('div');
+                div.className = 'form-field';
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                div.appendChild(label);
+                const input = document.createElement('input');
+                input.type = field.type || 'text';
+                input.id = field.id;
+                if (field.required) input.required = true;
+                input.addEventListener('input', calculateSponsorshipScore);
+                div.appendChild(input);
+                document.getElementById('basicInfo').appendChild(div);
+            });
+
+            const numCats = currentSponsorshipData.categories.length;
+            for (let i = 1; i <= 6; i++) {
+                const section = document.getElementById(`category${i}Section`);
+                if (!section) continue;
+                if (i > numCats) { section.classList.add('hidden'); }
+                else { section.classList.remove('hidden'); }
+            }
+
+            currentSponsorshipData.categories.forEach((category, idx) => {
+                const catNum = idx + 1;
+                const titleEl = document.getElementById(`category${catNum}Title`);
+                if (titleEl) titleEl.textContent = category.title;
+                const container = document.getElementById(`category${catNum}Fields`);
+                if (!container) return;
+
+                category.fields.forEach(field => {
+                    const div = document.createElement('div');
+                    div.className = 'form-field';
+                    const label = document.createElement('label');
+                    label.textContent = field.label;
+                    div.appendChild(label);
+
+                    const select = document.createElement('select');
+                    select.id = field.id;
+                    select.className = `category${catNum}-field sp-field`;
+                    select.required = true;
+
+                    const defaultOpt = document.createElement('option');
+                    defaultOpt.value = '';
+                    defaultOpt.textContent = 'Select...';
+                    select.appendChild(defaultOpt);
+
+                    // Store priority weight as data attribute
+                    select.dataset.priority = field.priority;
+
+                    field.options.forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt.s;
+                        option.textContent = opt.t;
+                        select.appendChild(option);
+                    });
+
+                    select.addEventListener('change', () => {
+                        calculateSponsorshipCategoryAvg(catNum);
+                        calculateSponsorshipScore();
+                    });
+                    div.appendChild(select);
+                    container.appendChild(div);
+                });
+            });
+
+            const prestigeSection = document.getElementById('prestigeSection');
+            if (prestigeSection) prestigeSection.classList.add('hidden');
+        }
+
+        function calculateSponsorshipCategoryAvg(catNum) {
+            const fields = document.querySelectorAll(`.category${catNum}-field`);
+            let weightedSum = 0, totalWeight = 0;
+            fields.forEach(f => {
+                if (f.value) {
+                    const pw = parseFloat(f.dataset.priority) || 1;
+                    weightedSum += parseFloat(f.value) * pw;
+                    totalWeight += pw;
+                }
+            });
+            const avg = totalWeight > 0 ? weightedSum / totalWeight : 0;
+            const avgEl = document.getElementById(`category${catNum}Avg`);
+            if (avgEl) avgEl.textContent = avg.toFixed(1);
+        }
+
+        function calculateSponsorshipScore() {
+            const nameInput = document.getElementById('spPropertyName');
+            if (!nameInput || !nameInput.value.trim()) {
+                document.getElementById('resultsSection').classList.remove('show');
+                return;
+            }
+
+            const spFields = document.querySelectorAll('.sp-field');
+            for (let f of spFields) {
+                if (!f.value) {
+                    document.getElementById('resultsSection').classList.remove('show');
+                    return;
+                }
+            }
+
+            // Scoring: for each question: score * priority_weight
+            // Final = sum(score * priority) / sum(max_score * priority) * 100
+            let totalWeighted = 0, totalMaxWeighted = 0;
+            const scoresByCategory = [];
+
+            currentSponsorshipData.categories.forEach((cat, idx) => {
+                const catNum = idx + 1;
+                let catWeighted = 0, catMax = 0;
+                cat.fields.forEach(field => {
+                    const el = document.getElementById(field.id);
+                    if (el && el.value) {
+                        const pw = field.priority;
+                        catWeighted += parseFloat(el.value) * pw;
+                        catMax += 10 * pw;
+                    }
+                });
+                totalWeighted += catWeighted;
+                totalMaxWeighted += catMax;
+                scoresByCategory.push({ title: cat.title, value: catMax > 0 ? (catWeighted / catMax * 100).toFixed(1) : '0.0' });
+            });
+
+            const finalScore = totalMaxWeighted > 0 ? (totalWeighted / totalMaxWeighted * 100) : 0;
+
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('finalScore').textContent = finalScore.toFixed(1);
+            document.getElementById('expandToggle').classList.remove('hidden');
+            document.getElementById('approvalReason').classList.add('hidden');
+
+            const catDisplay = document.getElementById('categoryScoresDisplay');
+            catDisplay.innerHTML = scoresByCategory.map(c =>
+                `<div class="category-score"><h4>${c.title}</h4><div class="value">${c.value}%</div></div>`
+            ).join('');
+
+            const recEl = document.getElementById('recommendation');
+            const s = finalScore;
+            if (s >= 80) { recEl.textContent = 'RECOMMEND - Strong Sponsorship Candidate'; recEl.className = 'recommendation apply'; }
+            else if (s >= 65) { recEl.textContent = 'CONSIDER - Subject to Further Review'; recEl.className = 'recommendation consider'; }
+            else if (s >= 50) { recEl.textContent = 'BORDERLINE - Requires Significant Justification'; recEl.className = 'recommendation consider'; }
+            else { recEl.textContent = 'DECLINE - Does Not Meet PIF Criteria'; recEl.className = 'recommendation decline'; }
+        }
+
+        initializeForm();
+    </script>
+</body>
+</html>
